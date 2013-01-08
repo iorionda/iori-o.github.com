@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Hi Llight and Deep Shade.]]></title>
+  <link href="http://iori-o.github.com/atom.xml" rel="self"/>
+  <link href="http://iori-o.github.com/"/>
+  <updated>2013-01-09T00:58:00+09:00</updated>
+  <id>http://iori-o.github.com/</id>
+  <author>
+    <name><![CDATA[Iori ONDA]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[test]]></title>
+    <link href="http://iori-o.github.com/blog/2013/01/09/test/"/>
+    <updated>2013-01-09T00:56:00+09:00</updated>
+    <id>http://iori-o.github.com/blog/2013/01/09/test</id>
+    <content type="html"><![CDATA[<p>test.</p>
+]]></content>
+  </entry>
+  
+</feed>
