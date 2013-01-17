@@ -4,7 +4,7 @@
   <title><![CDATA[Hi Llight and Deep Shade.]]></title>
   <link href="http://iori-o.github.com/atom.xml" rel="self"/>
   <link href="http://iori-o.github.com/"/>
-  <updated>2013-01-17T20:47:53+09:00</updated>
+  <updated>2013-01-17T20:51:04+09:00</updated>
   <id>http://iori-o.github.com/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
@@ -18,14 +18,14 @@
     <link href="http://iori-o.github.com/blog/2013/01/17/install-octpress-theme/"/>
     <updated>2013-01-17T20:05:00+09:00</updated>
     <id>http://iori-o.github.com/blog/2013/01/17/install-octpress-theme</id>
-    <content type="html"><![CDATA[<p>Octpressのテーマを標準でインストールされているものから<a href="https://github.com/amelandri/darkstripes">darkstripe</a>に変更したのでメモ。</p>
+    <content type="html"><![CDATA[<p>Octpressのテーマを標準でインストールされているものから<a href="https://github.com/amelandri/darkstripes">darkstripes</a>に変更したのでメモ。</p>
 
 <p>テーマ自体は<a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">ここ</a>にまとまっていたので、自分が気に入るのがないかひと通り覗いてみた。
 標準のテーマのままで使ってる人が多いようなので、あまりテーマはないのかなと思っていたけどそれなりに充実していた。</p>
 
 <ul>
 <li><a href="https://github.com/shashankmehta/greyshade">greyshade</a></li>
-<li><a href="https://github.com/amelandri/darkstripes">darkstripe</a></li>
+<li><a href="https://github.com/amelandri/darkstripes">darkstripes</a></li>
 <li><a href="http://blog.justin.kelly.org.au/octopress-theme/">justin-kelly</a></li>
 <li><a href="https://github.com/drunkdev/villainy-octopress-theme">villainy</a></li>
 </ul>
@@ -43,7 +43,7 @@
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">cd </span>octopress
 </span><span class='line'><span class="nv">$ </span>git clone git://github.com/amelandri/darkstripes.git .themes/darkstripes
 </span><span class='line'><span class="nv">$ </span>noglob bin/rake install<span class="o">[</span><span class="s1">&#39;darkstripes&#39;</span><span class="o">]</span>
-</span><span class='line'><span class="nv">$ </span>rake generate
+</span><span class='line'><span class="nv">$ </span>bin/rake generate
 </span></code></pre></td></tr></table></div></figure>
 
 
