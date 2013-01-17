@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octpress | Hi Llight and Deep Shade.]]></title>
   <link href="http://iori-o.github.com/blog/categories/octpress/atom.xml" rel="self"/>
   <link href="http://iori-o.github.com/"/>
-  <updated>2013-01-17T20:42:41+09:00</updated>
+  <updated>2013-01-17T20:47:53+09:00</updated>
   <id>http://iori-o.github.com/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
@@ -45,13 +45,13 @@ $ rake generate
 
 <p>最初はReadmeにあるまま</p>
 
-<p><code>
+<p><code>bash
 $ noglob rake install['darkstripes']
 </code></p>
 
 <p>を実行したら</p>
 
-<p><code>
+<p><code>bash
 $ zsh: no matches found: install[darkstripes]
 </code></p>
 
