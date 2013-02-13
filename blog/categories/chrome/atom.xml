@@ -4,7 +4,7 @@
   <title><![CDATA[Category: chrome | Hi Llight and Deep Shade.]]></title>
   <link href="http://iori-o.github.com/blog/categories/chrome/atom.xml" rel="self"/>
   <link href="http://iori-o.github.com/"/>
-  <updated>2013-02-14T01:42:00+09:00</updated>
+  <updated>2013-02-14T01:54:26+09:00</updated>
   <id>http://iori-o.github.com/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
@@ -24,9 +24,11 @@
 <p>みなさんもつらまってる時、よくもがちゃん（最上もが）を見ると思う。
 当然のごとく僕もそうである。</p>
 
-<p>最近つらい事がよくある。
-そんな時のために、もがちゃん（最上もが）を素早く表示する必要があった。
-なので、もがちゃん（最上もが）をすぐ見れるGoogle Chromeの拡張を作った。</p>
+<p>最近つらい事がよくある。</p>
+
+<p>そんな時のために、もがちゃん（最上もが）を素早く表示する必要があった。</p>
+
+<p>なので、もがちゃん（最上もが）をすぐ見れるGoogle Chromeの拡張を作った。</p>
 
 <p>「だめだ。もうやってらねー」って時は、空の tab を表示すればすぐもがちゃん（最上もが）に会える。最高。<s>結婚したい。</s></p>
 
@@ -42,6 +44,12 @@
 <blockquote><p>you don't have to fork this repository for only changing hostname.</p></blockquote>
 
 <p>とあるので、別に fork しないでも hostname の変更はオプションからできます。</p>
+
+<h3>追記</h3>
+
+<p>せっかく fork したので icon を追加したり背景を変えたりと色々やってます。</p>
+
+<p>奇しくもバレンタインデーになったので、もがちゃんチョコください。</p>
 
 <hr />
 
