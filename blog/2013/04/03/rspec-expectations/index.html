@@ -5,13 +5,17 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>すぐにもがちゃん（最上もが）を見れるGoogle Chromeの拡張作った。 - Hi Llight and Deep Shade.</title>
+  <title>Rspec の expect 記法を使ったテストの書き方 - Hi Llight and Deep Shade.</title>
   <meta name="author" content="Iori ONDA">
 
   
-  <meta name="description" content="生きていればつらいことがある。
-しかし、つらいからと言って簡単に投げ出す事は出来ないということも多い。 みなさんもつらまってる時、よくもがちゃん（最上もが）を見ると思う。
-当然のごとく僕もそうである。 最近つらい事がよくある。 そんな時のために、もがちゃん（最上もが）を素早く表示する必要があった &hellip;">
+  <meta name="description" content="Rspec では version 2.11 から 1
+2
+foo.should eq(bar)
+foo.should_not eq(bar) から 1
+2
+expect(foo).to eq(bar)
+expect(foo).not eq(bar) と書くようになった。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://iori-o.github.com/blog/2013/02/14/google-chrome-extension-which-can-see-mogamimoga/">
+  <link rel="canonical" href="http://iori-o.github.com/blog/2013/04/03/rspec-expectations/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -78,7 +82,7 @@
   <header>
     
       
-        <h1 class="entry-title">すぐにもがちゃん（最上もが）を見れるGoogle Chromeの拡張作った。</h1>
+        <h1 class="entry-title">Rspec の Expect 記法を使ったテストの書き方</h1>
       
     
     
@@ -95,7 +99,7 @@
   
 
 
-<time datetime="2013-02-14T01:25:00+09:00" pubdate data-updated="true">Feb 14<span>th</span>, 2013</time>
+<time datetime="2013-04-03T00:06:00+09:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -104,46 +108,50 @@
   </header>
 
 
-<div class="entry-content"><p>生きていればつらいことがある。
-しかし、つらいからと言って簡単に投げ出す事は出来ないということも多い。</p>
+<div class="entry-content"><p><a href="https://github.com/rspec/rspec-expectations">Rspec</a> では version 2.11 から</p>
 
-<p>みなさんもつらまってる時、よくもがちゃん（最上もが）を見ると思う。
-当然のごとく僕もそうである。</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">foo</span><span class="o">.</span><span class="n">should</span> <span class="n">eq</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span>
+</span><span class='line'><span class="n">foo</span><span class="o">.</span><span class="n">should_not</span> <span class="n">eq</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>最近つらい事がよくある。</p>
 
-<p>そんな時のために、もがちゃん（最上もが）を素早く表示する必要があった。</p>
+<p>から</p>
 
-<p>なので、もがちゃん（最上もが）をすぐ見れるGoogle Chromeの拡張を作った。</p>
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">expect</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span><span class="o">.</span><span class="n">to</span> <span class="n">eq</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span>
+</span><span class='line'><span class="n">expect</span><span class="p">(</span><span class="n">foo</span><span class="p">)</span><span class="o">.</span><span class="n">not</span> <span class="n">eq</span><span class="p">(</span><span class="n">bar</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
-<p>「だめだ。もうやってらねー」って時は、空の tab を表示すればすぐもがちゃん（最上もが）に会える。最高。<s>結婚したい。</s></p>
 
-<p><img src="/post_images/moga-snap.jpg"></p>
+<p>と書くようになった。</p>
 
-<p><a href="https://github.com/iori-o/chrome-tumblr-tile">iori-o / chrome-tumblr-tile</a></p>
+<p>なぜ新しい記法を導入したかの説明は<a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">RSpec&#8217;s New Expectation Syntax</a>に書かれている。
+簡単にまとめると</p>
 
-<p>元ネタは追いかけていなかったんだけど、FBで <a href="http://www.ysakmrkm.com/2013/02/google_chrome_extension_which_can_see_a-rin.html">ムラカミくんのBlog</a> をみてすぐに fork してしまった。
-そしてTumblrで新しいURL取得して、API key取得してもがちゃんの画像集めて、もがちゃんが可愛くて仕事に集中できない。</p>
+<ul>
+<li><p><code>should</code> は <code>Kernel</code> にあるので、<code>Kernel</code> を <code>include</code> しない <code>BasicObject</code> を継承したクラスのインスタンスに対して <code>should</code> を呼ぶと不具合がある。</p></li>
+<li><p>標準ライブラリの <code>delegate</code> は <code>Kernel</code> のメソッドの一部だけを <code>include</code> しているので、<code>rspec</code> と <code>delegate</code> のロードする順序によって <code>should</code> の挙動がおかしくなる。</p></li>
+</ul>
 
-<p>README.md に</p>
 
-<blockquote><p>you don&#8217;t have to fork this repository for only changing hostname.</p></blockquote>
+<p>という理由のようだ。</p>
 
-<p>とあるので、別に fork しないでも hostname の変更はオプションからできます。</p>
+<h2>基本的な書き方</h2>
 
-<h3>追記</h3>
+<p>基本的には先述の通り</p>
 
-<p>せっかく fork したので icon を追加したり背景を変えたりと色々やってます。</p>
+<ul>
+<li><code>foo.should</code> を <code>expect(foo).to</code> に</li>
+<li><code>foo.should_not</code> を <code>expect(foo).not</code> に</li>
+</ul>
 
-<p>奇しくもバレンタインデーになったので、もがちゃんチョコください。</p>
 
-<hr />
+<p>書き換えるだけで対応できる。</p>
 
-<p>inspired:</p>
-
-<p><a href="http://soh335.hatenablog.com/entry/2013/02/10/011039">すぐに宮崎あおいを見れるGoogle Chromeの拡張作った。</a></p>
-
-<p><a href="http://www.ysakmrkm.com/2013/02/google_chrome_extension_which_can_see_a-rin.html">すぐにあーりん（佐々木彩夏）を見れるGoogle Chromeの拡張作った。</a></p>
+<p>と、まとめていたらほぼ同じないようが<a href="http://qiita.com/items/d880250adc8cdbe7a32f">RSpecのshouldはもう古い!新しい記法expectを使おう!</a>にまとまっていた。</p>
 </div>
 
 
@@ -166,12 +174,12 @@
   
 
 
-<time datetime="2013-02-14T01:25:00+09:00" pubdate data-updated="true">Feb 14<span>th</span>, 2013</time>
+<time datetime="2013-04-03T00:06:00+09:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/chrome/'>chrome</a>
+    <a class='category' href='/blog/categories/rspec/'>rspec</a>, <a class='category' href='/blog/categories/ruby/'>ruby,</a>
   
 </span>
 
@@ -180,7 +188,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://iori-o.github.com/blog/2013/02/14/google-chrome-extension-which-can-see-mogamimoga/" data-via="120reset" data-counturl="http://iori-o.github.com/blog/2013/02/14/google-chrome-extension-which-can-see-mogamimoga/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://iori-o.github.com/blog/2013/04/03/rspec-expectations/" data-via="120reset" data-counturl="http://iori-o.github.com/blog/2013/04/03/rspec-expectations/" >Tweet</a>
   
   
   
@@ -191,10 +199,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left articlenav" href="/blog/2013/01/17/install-octpress-theme/" title="Previous Post: Octpress のテーマを変更してみた。">&laquo; Octpress のテーマを変更してみた。</a>
+        <a class="basic-alignment left articlenav" href="/blog/2013/02/14/google-chrome-extension-which-can-see-mogamimoga/" title="Previous Post: すぐにもがちゃん（最上もが）を見れるGoogle Chromeの拡張作った。">&laquo; すぐにもがちゃん（最上もが）を見れるGoogle Chromeの拡張作った。</a>
       
-      
-        <a class="basic-alignment right articlenav" href="/blog/2013/04/03/rspec-expectations/" title="Next Post: Rspec の expect 記法を使ったテストの書き方">Rspec の expect 記法を使ったテストの書き方 &raquo;</a>
       
     </p>
   </footer>
@@ -285,8 +291,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://iori-o.github.com/blog/2013/02/14/google-chrome-extension-which-can-see-mogamimoga/';
-        var disqus_url = 'http://iori-o.github.com/blog/2013/02/14/google-chrome-extension-which-can-see-mogamimoga/';
+        var disqus_identifier = 'http://iori-o.github.com/blog/2013/04/03/rspec-expectations/';
+        var disqus_url = 'http://iori-o.github.com/blog/2013/04/03/rspec-expectations/';
         var disqus_script = 'embed.js';
       
     (function () {

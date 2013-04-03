@@ -38,10 +38,10 @@
 <body   >
   <header role="banner"><hgroup>
   <div id="logo">
-      <div id="logoLeft">★</div>
-      <div id="logoText">★ </div>
-      <div id="logoRight">★</div>
-      <div class="clear"></div>
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">mob</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
   </div>
   <h1><a href="/">Hi Llight and Deep Shade.</a></h1>
   
@@ -66,7 +66,6 @@
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/blog/archives">Archives</a></li>
-  <li><a href="http://iorionda.tumblr.com/">Tumblr</a></li>
 </ul>
 
 </nav>
@@ -219,6 +218,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/04/03/rspec-expectations/">Rspec の expect 記法を使ったテストの書き方</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/02/14/google-chrome-extension-which-can-see-mogamimoga/">すぐにもがちゃん（最上もが）を見れるGoogle Chromeの拡張作った。</a>
       </li>
     
@@ -263,23 +266,6 @@
 </section>
 
 
-<section>
-  <h1>Latest Tweets</h1>
-  <ul id="tweets">
-    <li class="loading">Status updating...</li>
-  </ul>
-  <script type="text/javascript">
-    $.domReady(function(){
-      getTwitterFeed("120reset", 5, false);
-    });
-  </script>
-  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
-  
-    <a href="http://twitter.com/120reset" class="twitter-follow-button" data-show-count="false">Follow @120reset</a>
-  
-</section>
-
-
 
 
 
@@ -298,7 +284,7 @@
   
 
 <script type="text/javascript">
-      var disqus_shortname = 'hilightanddeepshade';
+      var disqus_shortname = 'IoriONDA';
       
         
         // var disqus_developer = 1;
