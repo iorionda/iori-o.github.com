@@ -4,7 +4,7 @@
   <title><![CDATA[Hi Llight and Deep Shade.]]></title>
   <link href="http://iori-o.github.com/atom.xml" rel="self"/>
   <link href="http://iori-o.github.com/"/>
-  <updated>2013-04-03T22:32:55+09:00</updated>
+  <updated>2013-04-03T22:54:04+09:00</updated>
   <id>http://iori-o.github.com/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
@@ -65,7 +65,7 @@ install 自体は <code>curl</code> で行う。</p>
 <span class='line-number'>10</span>
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>% curl -L git.io/nodebrew | perl - setup | perl - setup
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% curl -L git.io/nodebrew | perl - setup
 </span><span class='line'>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
 </span><span class='line'>                                 Dload  Upload   Total   Spent    Left  Speed
 </span><span class='line'>100 18289  100 18289    0     0   7088      0  0:00:02  0:00:02 --:--:--  8028
