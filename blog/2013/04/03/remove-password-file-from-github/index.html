@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: padrino - Hi Llight and Deep Shade.</title>
+  <title>GitHubに上げてしまったパスワードを書いたファイルを消す方法 - Hi Llight and Deep Shade.</title>
   <meta name="author" content="Iori ONDA">
 
   
-  <meta name="description" content="Category: padrino">
+  <meta name="description" content="間違ってパスワードを書いたファイルをGitHubにPushしてしまった場合、対象のファイルを削除しても commit 履歴には残ってしまっている。
+これをコミットした履歴ごと削除するにはどうしたらいいか。 対応する方法を探していたら以下の公式のヘルプにまとまっていた。
+Remove &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://iori-o.github.comblog/categories/padrino/">
+  <link rel="canonical" href="http://iori-o.github.com/blog/2013/04/03/remove-password-file-from-github/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -71,36 +73,112 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Padrino</h1>
+    
+      
+        <h1 class="entry-title">GitHubに上げてしまったパスワードを書いたファイルを消す方法</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-03T22:31:00+09:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><p>間違ってパスワードを書いたファイルをGitHubにPushしてしまった場合、対象のファイルを削除しても commit 履歴には残ってしまっている。
+これをコミットした履歴ごと削除するにはどうしたらいいか。</p>
 
-  
-  <h2>2013</h2>
+<p>対応する方法を探していたら以下の公式のヘルプにまとまっていた。
+<a href="https://help.github.com/articles/remove-sensitive-data">Remove sensitive data</a></p>
 
-<article>
-  
-<h1><a href="/blog/2013/04/03/padrino-plugins/">Padrino の Plugin を使う</a></h1>
-<time datetime="2013-04-03T22:18:00+09:00" pubdate><span class='month'>Apr</span> <span class='day'>03</span> <span class='year'>2013</span></time>
+<h2>手順</h2>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/padrino/'>padrino</a>, <a class='category' href='/blog/categories/ruby/'>ruby,</a></span>
-</footer>
+<p>方法としては<code>git filter-branch</code>で歴史をばっさりと書き換えて<code>--force</code>オプションをつけてpushするようだ。</p>
+
+<p>例えば Rakefile にパスワードを書いたまま誤ってGitHubにpushしてしまった場合は以下のようにする。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% git filter-branch --index-filter <span class="s1">&#39;git rm --cached --ignore-unmatch Rakefile&#39;</span> <span class="se">\</span>
+</span><span class='line'>  --prune-empty --tag-name-filter cat -- --all
+</span><span class='line'>% git push origin master --force
+</span></code></pre></td></tr></table></div></figure>
 
 
-</article>
-
+<p><a href="http://opensource.slashdot.jp/story/13/01/26/0745251/GitHub%E3%81%A7%E5%A4%9A%E3%81%8F%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%8C%E7%A7%98%E5%AF%86%E9%8D%B5%E3%82%92%E5%85%AC%E9%96%8B%E7%8A%B6%E6%85%8B%E3%81%AB%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E3%81%93%E3%81%A8%E3%81%8C%E5%88%A4%E6%98%8E">GitHubで多くのユーザーが秘密鍵を公開状態にしていたことが判明</a></p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Iori ONDA</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-03T22:31:00+09:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://iori-o.github.com/blog/2013/04/03/remove-password-file-from-github/" data-via="120reset" data-counturl="http://iori-o.github.com/blog/2013/04/03/remove-password-file-from-github/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2013/04/03/nodebrew-install/" title="Previous Post: nodebrew をインストールする方法">&laquo; nodebrew をインストールする方法</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -184,7 +262,10 @@
       var disqus_shortname = 'IoriONDA';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://iori-o.github.com/blog/2013/04/03/remove-password-file-from-github/';
+        var disqus_url = 'http://iori-o.github.com/blog/2013/04/03/remove-password-file-from-github/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

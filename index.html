@@ -9,20 +9,9 @@
   <meta name="author" content="Iori ONDA">
 
   
-  <meta name="description" content="nodebrew のインストール node.js をインストールするのに、nodebrewというバージョンマネージャーを利用する。
-install 自体は curl で行う。 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-% curl -L git.io/nodebrew | perl &hellip;">
+  <meta name="description" content="間違ってパスワードを書いたファイルをGitHubにPushしてしまった場合、対象のファイルを削除しても commit 履歴には残ってしまっている。
+これをコミットした履歴ごと削除するにはどうしたらいいか。 対応する方法を探していたら以下の公式のヘルプにまとまっていた。
+Remove &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +74,67 @@ install 自体は curl で行う。 1
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/04/03/remove-password-file-from-github/">GitHubに上げてしまったパスワードを書いたファイルを消す方法</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-03T22:31:00+09:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2013</time>
+        
+         | <a href="/blog/2013/04/03/remove-password-file-from-github/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>間違ってパスワードを書いたファイルをGitHubにPushしてしまった場合、対象のファイルを削除しても commit 履歴には残ってしまっている。
+これをコミットした履歴ごと削除するにはどうしたらいいか。</p>
+
+<p>対応する方法を探していたら以下の公式のヘルプにまとまっていた。
+<a href="https://help.github.com/articles/remove-sensitive-data">Remove sensitive data</a></p>
+
+<h2>手順</h2>
+
+<p>方法としては<code>git filter-branch</code>で歴史をばっさりと書き換えて<code>--force</code>オプションをつけてpushするようだ。</p>
+
+<p>例えば Rakefile にパスワードを書いたまま誤ってGitHubにpushしてしまった場合は以下のようにする。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% git filter-branch --index-filter <span class="s1">&#39;git rm --cached --ignore-unmatch Rakefile&#39;</span> <span class="se">\</span>
+</span><span class='line'>  --prune-empty --tag-name-filter cat -- --all
+</span><span class='line'>% git push origin master --force
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://opensource.slashdot.jp/story/13/01/26/0745251/GitHub%E3%81%A7%E5%A4%9A%E3%81%8F%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%8C%E7%A7%98%E5%AF%86%E9%8D%B5%E3%82%92%E5%85%AC%E9%96%8B%E7%8A%B6%E6%85%8B%E3%81%AB%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E3%81%93%E3%81%A8%E3%81%8C%E5%88%A4%E6%98%8E">GitHubで多くのユーザーが秘密鍵を公開状態にしていたことが判明</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -745,6 +795,10 @@ install 自体は <code>curl</code> で行う。</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/04/03/remove-password-file-from-github/">GitHubに上げてしまったパスワードを書いたファイルを消す方法</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/04/03/nodebrew-install/">nodebrew をインストールする方法</a>
       </li>
     
@@ -758,10 +812,6 @@ install 自体は <code>curl</code> で行う。</p>
     
       <li class="post">
         <a href="/blog/2013/02/14/google-chrome-extension-which-can-see-mogamimoga/">すぐにもがちゃん（最上もが）を見れるGoogle Chromeの拡張作った。</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/01/17/install-octpress-theme/">Octpress のテーマを変更してみた。</a>
       </li>
     
   </ul>

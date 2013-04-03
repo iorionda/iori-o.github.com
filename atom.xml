@@ -4,7 +4,7 @@
   <title><![CDATA[Hi Llight and Deep Shade.]]></title>
   <link href="http://iori-o.github.com/atom.xml" rel="self"/>
   <link href="http://iori-o.github.com/"/>
-  <updated>2013-04-03T22:29:58+09:00</updated>
+  <updated>2013-04-03T22:32:55+09:00</updated>
   <id>http://iori-o.github.com/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[GitHubに上げてしまったパスワードを書いたファイルを消す方法]]></title>
+    <link href="http://iori-o.github.com/blog/2013/04/03/remove-password-file-from-github/"/>
+    <updated>2013-04-03T22:31:00+09:00</updated>
+    <id>http://iori-o.github.com/blog/2013/04/03/remove-password-file-from-github</id>
+    <content type="html"><![CDATA[<p>間違ってパスワードを書いたファイルをGitHubにPushしてしまった場合、対象のファイルを削除しても commit 履歴には残ってしまっている。
+これをコミットした履歴ごと削除するにはどうしたらいいか。</p>
+
+<p>対応する方法を探していたら以下の公式のヘルプにまとまっていた。
+<a href="https://help.github.com/articles/remove-sensitive-data">Remove sensitive data</a></p>
+
+<h2>手順</h2>
+
+<p>方法としては<code>git filter-branch</code>で歴史をばっさりと書き換えて<code>--force</code>オプションをつけてpushするようだ。</p>
+
+<p>例えば Rakefile にパスワードを書いたまま誤ってGitHubにpushしてしまった場合は以下のようにする。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% git filter-branch --index-filter <span class="s1">&#39;git rm --cached --ignore-unmatch Rakefile&#39;</span> <span class="se">\</span>
+</span><span class='line'>  --prune-empty --tag-name-filter cat -- --all
+</span><span class='line'>% git push origin master --force
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://opensource.slashdot.jp/story/13/01/26/0745251/GitHub%E3%81%A7%E5%A4%9A%E3%81%8F%E3%81%AE%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E3%81%8C%E7%A7%98%E5%AF%86%E9%8D%B5%E3%82%92%E5%85%AC%E9%96%8B%E7%8A%B6%E6%85%8B%E3%81%AB%E3%81%97%E3%81%A6%E3%81%84%E3%81%9F%E3%81%93%E3%81%A8%E3%81%8C%E5%88%A4%E6%98%8E">GitHubで多くのユーザーが秘密鍵を公開状態にしていたことが判明</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[nodebrew をインストールする方法]]></title>
