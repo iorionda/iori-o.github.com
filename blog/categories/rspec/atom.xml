@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rspec | Hi Llight and Deep Shade.]]></title>
   <link href="http://iori-o.github.com/blog/categories/rspec/atom.xml" rel="self"/>
   <link href="http://iori-o.github.com/"/>
-  <updated>2013-04-03T22:02:32+09:00</updated>
+  <updated>2013-04-03T22:06:38+09:00</updated>
   <id>http://iori-o.github.com/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
@@ -57,7 +57,7 @@ expect(foo).not eq(bar)
 
 <p>書き換えるだけで対応できる。</p>
 
-<p>と、まとめていたらほぼ同じないようが<a href="http://qiita.com/items/d880250adc8cdbe7a32f">RSpecのshouldはもう古い!新しい記法expectを使おう!</a>にまとまっていた。</p>
+<p>と、まとめていたらほぼ同じ内容が<a href="http://qiita.com/items/d880250adc8cdbe7a32f">RSpecのshouldはもう古い!新しい記法expectを使おう!</a>にまとまっていた。</p>
 ]]></content>
   </entry>
   
