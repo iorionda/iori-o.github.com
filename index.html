@@ -9,8 +9,8 @@
   <meta name="author" content="Iori ONDA">
 
   
-  <meta name="description" content="Padrino にはテンプレートと同じような仕組みとして Plugin Generator がある。
-利用できるプラグインはpadrino/padrino-recipesで公開されている。 また、以下のコマンドで Plugin の一覧を参照できる。 1
+  <meta name="description" content="nodebrew のインストール node.js をインストールするのに、nodebrewというバージョンマネージャーを利用する。
+install 自体は curl で行う。 1
 2
 3
 4
@@ -20,7 +20,9 @@
 8
 9
 10
-11 &hellip;">
+11
+12
+% curl -L git.io/nodebrew | perl &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -83,6 +85,168 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/04/03/nodebrew-install/">Nodebrew をインストールする方法</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-03T22:24:00+09:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2013</time>
+        
+         | <a href="/blog/2013/04/03/nodebrew-install/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>nodebrew のインストール</h2>
+
+<p>node.js をインストールするのに、<a href="https://github.com/hokaccha/nodebrew">nodebrew</a>というバージョンマネージャーを利用する。
+install 自体は <code>curl</code> で行う。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% curl -L git.io/nodebrew | perl - setup | perl - setup
+</span><span class='line'>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+</span><span class='line'>                                 Dload  Upload   Total   Spent    Left  Speed
+</span><span class='line'>100 18289  100 18289    0     0   7088      0  0:00:02  0:00:02 --:--:--  8028
+</span><span class='line'>fetching nodebrew...
+</span><span class='line'>install nodebrew in <span class="nv">$HOME</span>/.nodebrew
+</span><span class='line'>
+</span><span class='line'><span class="o">========================================</span>
+</span><span class='line'>Add path:
+</span><span class='line'>
+</span><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/.nodebrew/current/bin:<span class="nv">$PATH</span>
+</span><span class='line'><span class="o">========================================</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>PATH を追加</h3>
+
+<p>.bashrc や .zshrc に PATH を追加する。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/.nodebrew/current/bin:<span class="nv">$PATH</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>PATH を追加したら <code>source</code> するのを忘れないように。</p>
+
+<h3>インストールされたことを確認。</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% nodebrew <span class="nb">help</span>
+</span><span class='line'>nodebrew 0.6.2
+</span><span class='line'>
+</span><span class='line'>Usage:
+</span><span class='line'>    nodebrew <span class="nb">help                       </span>Show this message
+</span><span class='line'>    nodebrew install &lt;version&gt;          Download and install a &lt;version&gt; <span class="o">(</span>compile from <span class="nb">source</span><span class="o">)</span>
+</span><span class='line'>    nodebrew install-binary &lt;version&gt;   Download and install a &lt;version&gt; <span class="o">(</span>binary file<span class="o">)</span>
+</span><span class='line'>    nodebrew uninstall &lt;version&gt;        Uninstall a version
+</span><span class='line'>    nodebrew use &lt;version&gt;              Use &lt;version&gt;
+</span><span class='line'>    nodebrew list                       List installed versions
+</span><span class='line'>    nodebrew ls                         Alias <span class="k">for</span> <span class="sb">`</span>list<span class="sb">`</span>
+</span><span class='line'>    nodebrew ls-remote                  List remote versions
+</span><span class='line'>    nodebrew ls-all                     List remote and installed versions
+</span><span class='line'>    nodebrew <span class="nb">alias</span> &lt;key&gt; &lt;version&gt;      Set <span class="nb">alias </span>to version
+</span><span class='line'>    nodebrew <span class="nb">unalias</span> &lt;key&gt;              Remove <span class="nb">alias</span>
+</span><span class='line'><span class="nb">    </span>nodebrew clean &lt;version&gt; | all      Remove <span class="nb">source </span>file
+</span><span class='line'>    nodebrew selfupdate                 Update nodebrew
+</span><span class='line'>    nodebrew migrate-package &lt;version&gt;  Install global NPM packages contained in &lt;version&gt; to current version
+</span><span class='line'>
+</span><span class='line'>Example:
+</span><span class='line'>    nodebrew install v0.6.0     Install a specific version number
+</span><span class='line'>    nodebrew use v0.6.0         Use a specific version number
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>node.js のインストール</h3>
+
+<p>node.js をバイナリからインストールする。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% nodebrew install-binary stable
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ソースからインストールする場合は以下</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% nodebrew install stable
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>バージョンの切り替え</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% nodebrew use stable
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>アンインストール</h3>
+
+<p>アンインストールするのもバージョンを指定するだけで簡単にできる。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% nodebrew uninstall v0.8.18
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -581,6 +745,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/04/03/nodebrew-install/">nodebrew をインストールする方法</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/04/03/padrino-plugins/">Padrino の Plugin を使う</a>
       </li>
     
@@ -594,10 +762,6 @@
     
       <li class="post">
         <a href="/blog/2013/01/17/install-octpress-theme/">Octpress のテーマを変更してみた。</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/01/09/test/">test</a>
       </li>
     
   </ul>
