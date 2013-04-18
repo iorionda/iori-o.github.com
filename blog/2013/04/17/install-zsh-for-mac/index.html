@@ -5,24 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>nodebrew をインストールする方法 - Hi Llight and Deep Shade.</title>
+  <title>Macでhomebrewのzshを使う - Hi Llight and Deep Shade.</title>
   <meta name="author" content="Iori ONDA">
 
   
-  <meta name="description" content="nodebrew のインストール node.js をインストールするのに、nodebrewというバージョンマネージャーを利用する。
-install 自体は curl で行う。 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-% curl -L git.io/nodebrew | perl &hellip;">
+  <meta name="description" content="何度目かのクリーンインストールをした時にログインシェルを変更するのを忘れていたのでメモ。 homebrew でインストールした zsh はそのままではログインシェルとして使うことができない。
+なので、シェルの PATH を通す必要がある。 homebrew で zsh のインストール Mac の &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,7 +19,7 @@ install 自体は curl で行う。 1
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://iori-o.github.com/blog/2013/04/03/nodebrew-install/">
+  <link rel="canonical" href="http://iori-o.github.com/blog/2013/04/17/install-zsh-for-mac/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -89,7 +77,7 @@ install 自体は curl で行う。 1
   <header>
     
       
-        <h1 class="entry-title">Nodebrew をインストールする方法</h1>
+        <h1 class="entry-title">Macでhomebrewのzshを使う</h1>
       
     
     
@@ -106,7 +94,7 @@ install 自体は curl で行う。 1
   
 
 
-<time datetime="2013-04-03T22:24:00+09:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2013</time>
+<time datetime="2013-04-17T23:02:00+09:00" pubdate data-updated="true">Apr 17<span>th</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -115,50 +103,15 @@ install 自体は curl で行う。 1
   </header>
 
 
-<div class="entry-content"><h2>nodebrew のインストール</h2>
+<div class="entry-content"><p>何度目かのクリーンインストールをした時にログインシェルを変更するのを忘れていたのでメモ。</p>
 
-<p>node.js をインストールするのに、<a href="https://github.com/hokaccha/nodebrew">nodebrew</a>というバージョンマネージャーを利用する。
-install 自体は <code>curl</code> で行う。</p>
+<p>homebrew でインストールした zsh はそのままではログインシェルとして使うことができない。
+なので、シェルの PATH を通す必要がある。</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>% curl -L git.io/nodebrew | perl - setup
-</span><span class='line'>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-</span><span class='line'>                                 Dload  Upload   Total   Spent    Left  Speed
-</span><span class='line'>100 18289  100 18289    0     0   7088      0  0:00:02  0:00:02 --:--:--  8028
-</span><span class='line'>fetching nodebrew...
-</span><span class='line'>install nodebrew in <span class="nv">$HOME</span>/.nodebrew
-</span><span class='line'>
-</span><span class='line'><span class="o">========================================</span>
-</span><span class='line'>Add path:
-</span><span class='line'>
-</span><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/.nodebrew/current/bin:<span class="nv">$PATH</span>
-</span><span class='line'><span class="o">========================================</span>
-</span></code></pre></td></tr></table></div></figure>
+<h2>homebrew で zsh のインストール</h2>
 
-
-<h3>PATH を追加</h3>
-
-<p>.bashrc や .zshrc に PATH を追加する。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/.nodebrew/current/bin:<span class="nv">$PATH</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>PATH を追加したら <code>source</code> するのを忘れないように。</p>
-
-<h3>インストールされたことを確認。</h3>
+<p>Mac の zsh は起動時に PATH をリセットしてしまう。
+対応方法としては <code>brew info zsh</code> に記述されているので、それに沿ってインストールを行う。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -175,69 +128,107 @@ install 自体は <code>curl</code> で行う。</p>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
 <span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>% nodebrew <span class="nb">help</span>
-</span><span class='line'>nodebrew 0.6.2
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% brew info <span class="nv">zsh</span>
+</span><span class='line'><span class="o">==</span>&gt; Options
+</span><span class='line'>--disable-etcdir
+</span><span class='line'>    Disable the reading of Zsh rc files in /etc
+</span><span class='line'><span class="o">==</span>&gt; Caveats
+</span><span class='line'>To use this build of Zsh as your login shell, add it to /etc/shells.
 </span><span class='line'>
-</span><span class='line'>Usage:
-</span><span class='line'>    nodebrew <span class="nb">help                       </span>Show this message
-</span><span class='line'>    nodebrew install &lt;version&gt;          Download and install a &lt;version&gt; <span class="o">(</span>compile from <span class="nb">source</span><span class="o">)</span>
-</span><span class='line'>    nodebrew install-binary &lt;version&gt;   Download and install a &lt;version&gt; <span class="o">(</span>binary file<span class="o">)</span>
-</span><span class='line'>    nodebrew uninstall &lt;version&gt;        Uninstall a version
-</span><span class='line'>    nodebrew use &lt;version&gt;              Use &lt;version&gt;
-</span><span class='line'>    nodebrew list                       List installed versions
-</span><span class='line'>    nodebrew ls                         Alias <span class="k">for</span> <span class="sb">`</span>list<span class="sb">`</span>
-</span><span class='line'>    nodebrew ls-remote                  List remote versions
-</span><span class='line'>    nodebrew ls-all                     List remote and installed versions
-</span><span class='line'>    nodebrew <span class="nb">alias</span> &lt;key&gt; &lt;version&gt;      Set <span class="nb">alias </span>to version
-</span><span class='line'>    nodebrew <span class="nb">unalias</span> &lt;key&gt;              Remove <span class="nb">alias</span>
-</span><span class='line'><span class="nb">    </span>nodebrew clean &lt;version&gt; | all      Remove <span class="nb">source </span>file
-</span><span class='line'>    nodebrew selfupdate                 Update nodebrew
-</span><span class='line'>    nodebrew migrate-package &lt;version&gt;  Install global NPM packages contained in &lt;version&gt; to current version
+</span><span class='line'>If you have administrator privileges, you must fix an Apple miss
+</span><span class='line'>configuration in Mac OS X 10.7 Lion by renaming /etc/zshenv to
+</span><span class='line'>/etc/zprofile, or Zsh will have the wrong PATH when executed
+</span><span class='line'>non-interactively by scripts.
 </span><span class='line'>
-</span><span class='line'>Example:
-</span><span class='line'>    nodebrew install v0.6.0     Install a specific version number
-</span><span class='line'>    nodebrew use v0.6.0         Use a specific version number
+</span><span class='line'>Alternatively, install Zsh with /etc disabled:
+</span><span class='line'>
+</span><span class='line'>  brew install --disable-etcdir zsh
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>node.js のインストール</h3>
-
-<p>node.js をバイナリからインストールする。</p>
+<p>ということなので</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>% nodebrew install-binary stable
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% brew install --disable-etcdir zsh
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>ソースからインストールする場合は以下</p>
+<h2>/etc/shellsにシェルの PATH を追加する</h2>
+
+<p><code>/etc/shells</code>  に homebrew でいれた zsh のパスを追加する。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>% nodebrew install stable
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% sudo vi /etc/shells
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>バージョンの切り替え</p>
+<p>開いたら、設定したいシェルのフルパスを shells の一番下に追記する。
+homebrew でいれた zsh を設定する場合は下のように <code>/usr/local/bin/zsh</code> を追記する。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>% nodebrew use stable
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% cat /etc/shells
+</span><span class='line'> List of acceptable shells <span class="k">for </span>chpass<span class="o">(</span>1<span class="o">)</span>.
+</span><span class='line'><span class="c"># Ftpd will not allow users to connect who are not using</span>
+</span><span class='line'><span class="c"># one of these shells.</span>
+</span><span class='line'>
+</span><span class='line'>/bin/bash
+</span><span class='line'>/bin/csh
+</span><span class='line'>/bin/ksh
+</span><span class='line'>/bin/sh
+</span><span class='line'>/bin/tcsh
+</span><span class='line'>/bin/zsh
+</span><span class='line'>/usr/local/bin/zsh
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>アンインストール</h3>
+<h2>デフォルトシェル変更</h2>
 
-<p>アンインストールするのもバージョンを指定するだけで簡単にできる。</p>
+<p>まず、下記のコマンドを実行してログインシェルを変更する。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>% nodebrew uninstall v0.8.18
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% chpass -s /usr/local/bin/zsh
 </span></code></pre></td></tr></table></div></figure>
 
+
+<p>ログインシェルが変更されたことを確認するために下記を実行する。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% chpass
+</span><span class='line'><span class="c"># Changing user information for iori.</span>
+</span><span class='line'><span class="c"># Use &quot;passwd&quot; to change the password.</span>
+</span><span class='line'><span class="c">##</span>
+</span><span class='line'><span class="c"># Open Directory: /Local/Default</span>
+</span><span class='line'><span class="c">##</span>
+</span><span class='line'>Shell: /usr/local/bin/zsh
+</span><span class='line'>Full Name: Iori ONDA
+</span><span class='line'>Office Location:-
+</span><span class='line'>Office Phone:-
+</span><span class='line'>Home Phone:-
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ここで <code>Shell</code> の部分が設定した内容になっていればOK.</p>
 </div>
 
 
@@ -260,15 +251,21 @@ install 自体は <code>curl</code> で行う。</p>
   
 
 
-<time datetime="2013-04-03T22:24:00+09:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2013</time>
+<time datetime="2013-04-17T23:02:00+09:00" pubdate data-updated="true">Apr 17<span>th</span>, 2013</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/mac/'>mac,</a>, <a class='category' href='/blog/categories/zsh/'>zsh</a>
+  
+</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://iori-o.github.com/blog/2013/04/03/nodebrew-install/" data-via="120reset" data-counturl="http://iori-o.github.com/blog/2013/04/03/nodebrew-install/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://iori-o.github.com/blog/2013/04/17/install-zsh-for-mac/" data-via="120reset" data-counturl="http://iori-o.github.com/blog/2013/04/17/install-zsh-for-mac/" >Tweet</a>
   
   
   
@@ -279,10 +276,8 @@ install 自体は <code>curl</code> で行う。</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left articlenav" href="/blog/2013/04/03/padrino-plugins/" title="Previous Post: Padrino の Plugin を使う">&laquo; Padrino の Plugin を使う</a>
+        <a class="basic-alignment left articlenav" href="/blog/2013/04/03/remove-password-file-from-github/" title="Previous Post: GitHubに上げてしまったパスワードを書いたファイルを消す方法">&laquo; GitHubに上げてしまったパスワードを書いたファイルを消す方法</a>
       
-      
-        <a class="basic-alignment right articlenav" href="/blog/2013/04/03/remove-password-file-from-github/" title="Next Post: GitHubに上げてしまったパスワードを書いたファイルを消す方法">GitHubに上げてしまったパスワードを書いたファイルを消す方法 &raquo;</a>
       
     </p>
   </footer>
@@ -377,8 +372,8 @@ install 自体は <code>curl</code> で行う。</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://iori-o.github.com/blog/2013/04/03/nodebrew-install/';
-        var disqus_url = 'http://iori-o.github.com/blog/2013/04/03/nodebrew-install/';
+        var disqus_identifier = 'http://iori-o.github.com/blog/2013/04/17/install-zsh-for-mac/';
+        var disqus_url = 'http://iori-o.github.com/blog/2013/04/17/install-zsh-for-mac/';
         var disqus_script = 'embed.js';
       
     (function () {

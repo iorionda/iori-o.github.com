@@ -9,9 +9,8 @@
   <meta name="author" content="Iori ONDA">
 
   
-  <meta name="description" content="間違ってパスワードを書いたファイルをGitHubにPushしてしまった場合、対象のファイルを削除しても commit 履歴には残ってしまっている。
-これをコミットした履歴ごと削除するにはどうしたらいいか。 対応する方法を探していたら以下の公式のヘルプにまとまっていた。
-Remove &hellip;">
+  <meta name="description" content="何度目かのクリーンインストールをした時にログインシェルを変更するのを忘れていたのでメモ。 homebrew でインストールした zsh はそのままではログインシェルとして使うことができない。
+なので、シェルの PATH を通す必要がある。 homebrew で zsh のインストール Mac の &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +73,171 @@ Remove &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/04/17/install-zsh-for-mac/">Macでhomebrewのzshを使う</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-17T23:02:00+09:00" pubdate data-updated="true">Apr 17<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/04/17/install-zsh-for-mac/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>何度目かのクリーンインストールをした時にログインシェルを変更するのを忘れていたのでメモ。</p>
+
+<p>homebrew でインストールした zsh はそのままではログインシェルとして使うことができない。
+なので、シェルの PATH を通す必要がある。</p>
+
+<h2>homebrew で zsh のインストール</h2>
+
+<p>Mac の zsh は起動時に PATH をリセットしてしまう。
+対応方法としては <code>brew info zsh</code> に記述されているので、それに沿ってインストールを行う。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% brew info <span class="nv">zsh</span>
+</span><span class='line'><span class="o">==</span>&gt; Options
+</span><span class='line'>--disable-etcdir
+</span><span class='line'>    Disable the reading of Zsh rc files in /etc
+</span><span class='line'><span class="o">==</span>&gt; Caveats
+</span><span class='line'>To use this build of Zsh as your login shell, add it to /etc/shells.
+</span><span class='line'>
+</span><span class='line'>If you have administrator privileges, you must fix an Apple miss
+</span><span class='line'>configuration in Mac OS X 10.7 Lion by renaming /etc/zshenv to
+</span><span class='line'>/etc/zprofile, or Zsh will have the wrong PATH when executed
+</span><span class='line'>non-interactively by scripts.
+</span><span class='line'>
+</span><span class='line'>Alternatively, install Zsh with /etc disabled:
+</span><span class='line'>
+</span><span class='line'>  brew install --disable-etcdir zsh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ということなので</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% brew install --disable-etcdir zsh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>/etc/shellsにシェルの PATH を追加する</h2>
+
+<p><code>/etc/shells</code>  に homebrew でいれた zsh のパスを追加する。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% sudo vi /etc/shells
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>開いたら、設定したいシェルのフルパスを shells の一番下に追記する。
+homebrew でいれた zsh を設定する場合は下のように <code>/usr/local/bin/zsh</code> を追記する。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% cat /etc/shells
+</span><span class='line'> List of acceptable shells <span class="k">for </span>chpass<span class="o">(</span>1<span class="o">)</span>.
+</span><span class='line'><span class="c"># Ftpd will not allow users to connect who are not using</span>
+</span><span class='line'><span class="c"># one of these shells.</span>
+</span><span class='line'>
+</span><span class='line'>/bin/bash
+</span><span class='line'>/bin/csh
+</span><span class='line'>/bin/ksh
+</span><span class='line'>/bin/sh
+</span><span class='line'>/bin/tcsh
+</span><span class='line'>/bin/zsh
+</span><span class='line'>/usr/local/bin/zsh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>デフォルトシェル変更</h2>
+
+<p>まず、下記のコマンドを実行してログインシェルを変更する。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% chpass -s /usr/local/bin/zsh
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ログインシェルが変更されたことを確認するために下記を実行する。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% chpass
+</span><span class='line'><span class="c"># Changing user information for iori.</span>
+</span><span class='line'><span class="c"># Use &quot;passwd&quot; to change the password.</span>
+</span><span class='line'><span class="c">##</span>
+</span><span class='line'><span class="c"># Open Directory: /Local/Default</span>
+</span><span class='line'><span class="c">##</span>
+</span><span class='line'>Shell: /usr/local/bin/zsh
+</span><span class='line'>Full Name: Iori ONDA
+</span><span class='line'>Office Location:-
+</span><span class='line'>Office Phone:-
+</span><span class='line'>Home Phone:-
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ここで <code>Shell</code> の部分が設定した内容になっていればOK.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -795,6 +959,10 @@ install 自体は <code>curl</code> で行う。</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/04/17/install-zsh-for-mac/">Macでhomebrewのzshを使う</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/04/03/remove-password-file-from-github/">GitHubに上げてしまったパスワードを書いたファイルを消す方法</a>
       </li>
     
@@ -808,10 +976,6 @@ install 自体は <code>curl</code> で行う。</p>
     
       <li class="post">
         <a href="/blog/2013/04/03/rspec-expectations/">Rspec の expect 記法を使ったテストの書き方</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/02/14/google-chrome-extension-which-can-see-mogamimoga/">すぐにもがちゃん（最上もが）を見れるGoogle Chromeの拡張作った。</a>
       </li>
     
   </ul>
