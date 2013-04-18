@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: rspec | Hi Llight and Deep Shade.]]></title>
-  <link href="http://iori-o.github.com/blog/categories/rspec/atom.xml" rel="self"/>
-  <link href="http://iori-o.github.com/"/>
-  <updated>2013-04-18T22:45:01+09:00</updated>
-  <id>http://iori-o.github.com/</id>
+  <title><![CDATA[Category: rspec | Hi Llight and The Deep Shade.]]></title>
+  <link href="http://iori-o.github.io/blog/categories/rspec/atom.xml" rel="self"/>
+  <link href="http://iori-o.github.io/"/>
+  <updated>2013-04-18T23:41:26+09:00</updated>
+  <id>http://iori-o.github.io/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Rspec の expect 記法を使ったテストの書き方]]></title>
-    <link href="http://iori-o.github.com/blog/2013/04/03/rspec-expectations/"/>
+    <link href="http://iori-o.github.io/blog/2013/04/03/rspec-expectations/"/>
     <updated>2013-04-03T00:06:00+09:00</updated>
-    <id>http://iori-o.github.com/blog/2013/04/03/rspec-expectations</id>
+    <id>http://iori-o.github.io/blog/2013/04/03/rspec-expectations</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/rspec/rspec-expectations">Rspec</a> では version 2.11 から</p>
 
 <p><code>ruby

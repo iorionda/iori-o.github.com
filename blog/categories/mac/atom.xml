@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: mac, | Hi Llight and Deep Shade.]]></title>
-  <link href="http://iori-o.github.com/blog/categories/mac/atom.xml" rel="self"/>
-  <link href="http://iori-o.github.com/"/>
-  <updated>2013-04-18T22:45:01+09:00</updated>
-  <id>http://iori-o.github.com/</id>
+  <title><![CDATA[Category: mac, | Hi Llight and The Deep Shade.]]></title>
+  <link href="http://iori-o.github.io/blog/categories/mac/atom.xml" rel="self"/>
+  <link href="http://iori-o.github.io/"/>
+  <updated>2013-04-18T23:41:26+09:00</updated>
+  <id>http://iori-o.github.io/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Macでhomebrewのzshを使う]]></title>
-    <link href="http://iori-o.github.com/blog/2013/04/17/install-zsh-for-mac/"/>
+    <link href="http://iori-o.github.io/blog/2013/04/17/install-zsh-for-mac/"/>
     <updated>2013-04-17T23:02:00+09:00</updated>
-    <id>http://iori-o.github.com/blog/2013/04/17/install-zsh-for-mac</id>
+    <id>http://iori-o.github.io/blog/2013/04/17/install-zsh-for-mac</id>
     <content type="html"><![CDATA[<p>何度目かのクリーンインストールをした時にログインシェルを変更するのを忘れていたのでメモ。</p>
 
 <p>homebrew でインストールした zsh はそのままではログインシェルとして使うことができない。

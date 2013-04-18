@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: ruby, | Hi Llight and Deep Shade.]]></title>
-  <link href="http://iori-o.github.com/blog/categories/ruby/atom.xml" rel="self"/>
-  <link href="http://iori-o.github.com/"/>
-  <updated>2013-04-18T22:45:01+09:00</updated>
-  <id>http://iori-o.github.com/</id>
+  <title><![CDATA[Category: ruby, | Hi Llight and The Deep Shade.]]></title>
+  <link href="http://iori-o.github.io/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://iori-o.github.io/"/>
+  <updated>2013-04-18T23:41:26+09:00</updated>
+  <id>http://iori-o.github.io/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Padrino の Plugin を使う]]></title>
-    <link href="http://iori-o.github.com/blog/2013/04/03/padrino-plugins/"/>
+    <link href="http://iori-o.github.io/blog/2013/04/03/padrino-plugins/"/>
     <updated>2013-04-03T22:18:00+09:00</updated>
-    <id>http://iori-o.github.com/blog/2013/04/03/padrino-plugins</id>
+    <id>http://iori-o.github.io/blog/2013/04/03/padrino-plugins</id>
     <content type="html"><![CDATA[<p><a href="http://www.padrinorb.com/">Padrino</a> にはテンプレートと同じような仕組みとして Plugin Generator がある。
 利用できるプラグインは<a href="https://github.com/padrino/padrino-recipes/tree/master/plugins/">padrino/padrino-recipes</a>で公開されている。</p>
 
@@ -126,9 +126,9 @@ end
   
   <entry>
     <title type="html"><![CDATA[Rspec の expect 記法を使ったテストの書き方]]></title>
-    <link href="http://iori-o.github.com/blog/2013/04/03/rspec-expectations/"/>
+    <link href="http://iori-o.github.io/blog/2013/04/03/rspec-expectations/"/>
     <updated>2013-04-03T00:06:00+09:00</updated>
-    <id>http://iori-o.github.com/blog/2013/04/03/rspec-expectations</id>
+    <id>http://iori-o.github.io/blog/2013/04/03/rspec-expectations</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/rspec/rspec-expectations">Rspec</a> では version 2.11 から</p>
 
 <p><code>ruby
