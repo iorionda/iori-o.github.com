@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: SublimeText2 | Hi Llight and The Deep Shade.]]></title>
+  <link href="http://iori-o.github.io/blog/categories/sublimetext2/atom.xml" rel="self"/>
+  <link href="http://iori-o.github.io/"/>
+  <updated>2013-04-22T00:23:41+09:00</updated>
+  <id>http://iori-o.github.io/</id>
+  <author>
+    <name><![CDATA[Iori ONDA]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SublimeText2 のインストールと設定]]></title>
+    <link href="http://iori-o.github.io/blog/2013/04/22/install-sublimetext2/"/>
+    <updated>2013-04-22T00:17:00+09:00</updated>
+    <id>http://iori-o.github.io/blog/2013/04/22/install-sublimetext2</id>
+    <content type="html"><![CDATA[<h2>ダウンロード</h2>
+
+<p><a href="http://www.sublimetext.com/">Sublime Text: The text editor you’ll fall in love with</a></p>
+
+<p>ダウンロードは <a href="http://www.sublimetext.com/2">http://www.sublimetext.com/2</a> から。</p>
+
+<p>他にも <a href="http://www.sublimetext.com/dev">Dev Builds</a> のダウンロードもすることができる。</p>
+
+<h2>Command Pallet を使う</h2>
+
+<p>TextMate と同様に Sublime Text2では <code>Command + Shift + p</code> で Command Pallet を開くことができる。
+Command Pallet 上でコマンド名をタイプするとコマンドが絞り込まれていくので必要なコマンドを選択して実行することができる。</p>
+
+<h2>Package Control のインストール</h2>
+
+<p>Sublime Text2 をインストールしたら、まずはじめにやっておいた方がいいのが Sublime Package Control をインストール。
+インストールするには control+`, またはメニューの <code>View &gt; Show Console</code> でコンソールを立ち上げて下記のコマンドを実行する。</p>
+
+<p><code>python
+import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print('Please restart Sublime Text to finish installation')
+</code></p>
+
+<p>実行後に再起動すると Package Control が使えるようになる。
+Command Pallet を開き <code>install</code> で絞り込むと <code>Package Controll: Install Package</code> というコマンドがあるので Enter する。
+実行するとクイックパネルに利用可能なパッケージが一覧表示されるので、インストールしたいパッケージの名前を入力する。
+インストールのステータスはエディタ下部のステータスエリアで確認することができる。</p>
+
+<p>Package Control で実行できるコマンドは <a href="http://wbond.net/sublime_packages/package_control/usage">http://wbond.net/sublime_packages/package_control/usage</a> を参照。</p>
+
+<h2>各種設定</h2>
+
+<h3>コマンドライン</h3>
+
+<p>まずはコマンドラインから Sublime Text2 を起動するために subl へのシンボリックリンクを作成する。</p>
+
+<p><code>bash
+% ln -s "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
+</code></p>
+
+<p><a href="http://www.sublimetext.com/docs/2/osx_command_line.html">OS X Commnad Line</a></p>
+
+<h4>ヘルプの参照</h4>
+
+<p>``` bash
+% subl --help</p>
+
+<p>Sublime Text 2 Build 2217</p>
+
+<p>Usage: subl [arguments] [files]         edit the given files
+   or: subl [arguments] [directories]   open the given directories
+   or: subl [arguments] -               edit stdin</p>
+
+<p>Arguments:
+  --project <project>: Load the given project
+  --command <command>: Run the given command
+  -n or --new-window:  Open a new window
+  -a or --add:         Add folders to the current window
+  -w or --wait:        Wait for the files to be closed before returning
+  -b or --background:  Don't activate the application
+  -s or --stay:        Keep the application activated after closing the file
+  -h or --help:        Show help (this message) and exit
+  -v or --version:     Show version and exit</p>
+
+<p>--wait is implied if reading from stdin. Use --stay to not switch back
+to the terminal when a file is closed (only relevant if waiting for a file).</p>
+
+<p>Filenames may be given a :line or :line:column suffix to open at a specific
+location.
+```</p>
+
+<h3>テーマの適用</h3>
+
+<p>RailsCastsのテーマを適用する。
+まず、以下のリンクからRailsCastsのテーマを取得する
+<a href="http://media.railscasts.com/resources/textmate_theme.zip">Download RailsCasts Theme</a></p>
+
+<h4>設定方法</h4>
+
+<p>ダウンロードしたテーマファイルをSublime Text2のパッケージディレクトリへ配置する。</p>
+
+<p><code>bash
+% cp ~/Downloads/Railscasts.tmTheme ~/Library/Application\ Support/Sublime\ Text\ 2/Packages/
+</code></p>
+
+<p>Sublime Text2を起動してメニューから<code>Sublime Text 2 &gt; Preference &gt; Color Scheme &gt; Railscasts</code>を選択する。</p>
+
+<h2>アイコンの変更</h2>
+
+<p><a href="https://github.com/dmatarazzo/Sublime-Text-2-Icon">dmatarazzo / Sublime-Text-2-Icon</a> から変更するアイコンを取得する。</p>
+
+<p>以下のコマンドを実行することでアイコンが置き換わる。</p>
+
+<p><code>
+% git clone git://github.com/dmatarazzo/Sublime-Text-2-Icon.git
+% ./mac_replace_icons
+</code></p>
+
+<p>手動でアイコンを置き換える場合は、ターミナルで<code>open /Applications/Sublime\ Text\ 2.app/Contents/Resources/</code>を開いて icnsを上書きすればOK.</p>
+
+<h2>Dropbox で設定の共有</h2>
+
+<p>github を使って設定の共有をしたかったけど、方法がいまいち方法がわからなかったので Dropbox を使ってファイルの同期を設定した。</p>
+
+<ol>
+<li>Sublime Text 2 を終了させる。</li>
+<li>Dropbox に Sublime Text 2 ディレクトリを作成する。</li>
+<li>Sublime Text 2 の設定ファイルを Dropbox にコピーする。</li>
+<li>コピー元のファイルを削除する。</li>
+<li>シンボリックリンクを作成する。</li>
+</ol>
+
+
+<p><code>bash
+% mkdir -p ~/Dropbox/Sublime\ Text\ 2/
+% cd ~/Library/Application\ Support/Sublime\ Text\ 2/
+% cp Installed Packages ~/Dropbox/Sublime\ Text\ 2/
+% cp Pristine Packages ~/Dropbox/Sublime\ Text\ 2/
+% cp Packages ~/Dropbox/Sublime\ Text\ 2/
+% rm Installed Packages Pristine Packages Packages
+% ln -s ~/Dropbox/Sublime\ Text\ 2/Installed\ Packages .
+% ln -s ~/Dropbox/Sublime\ Text\ 2/Pristine Packages .
+% ln -s  ~/Dropbox/Sublime\ Text\ 2/Packages .
+</code></p>
+
+<p>参考:
+<a href="http://wheels.onebuttonapps.net/2012/04/use-dropbox-to-store-your-sublime-text-2-settings/">Use Dropbox to store your Sublime Text 2 settings, themes and plugins</a></p>
+
+<h2>設定</h2>
+
+<p><code>Sublime Text2 &gt; Preferences &gt; Settings - User</code>から設定を編集できる。
+Default の設定が評価されてから、Userの設定が評価されるので上書きしたい内容をUserの設定に記述する。</p>
+
+<h3>現在の設定 (2013-02-14)</h3>
+
+<p>```json
+{</p>
+
+<pre><code>"auto_complete_commit_on_tab": true,
+"auto_complete_delay": 50,
+"bold_folder_labels": true,
+"caret_style": "phase",
+"color_scheme": "Packages/Railscasts.tmTheme",
+"default_encoding": "UTF-8",
+"draw_minimap_border": true,
+"draw_white_space": "all",
+"font_face": "Ricty Discord Regular",
+"font_size": 14,
+"highlight_line": true,
+"ignored_packages":
+[
+    "Vintage"
+],
+"indent_guide_options":
+[
+    "draw_active",
+    "draw_normal"
+],
+"indent_to_bracket": true,
+"line_padding_bottom": 0,
+"line_padding_top": 0,
+"margin": 0,
+"match_brackets_angle": true,
+"overlay_scroll_bars": "enabled",
+"rulers":
+[
+    80
+],
+"scroll_speed": 1.0,
+"theme": "Phoenix Dark.sublime-theme",
+"translate_tabs_to_spaces": true,
+"trim_trailing_white_space_on_save": false,
+"word_wrap": false,
+"wrap_with": 80
+</code></pre>
+
+<p>}
+```</p>
+
+<h3>キーマップ</h3>
+
+<p>```json
+[</p>
+
+<pre><code>{ "keys": ["super+alt+p"], "command": "show_overlay", "args": { "overlay": "command_palette", "text": "install"}},
+{ "keys": ["alt+m"], "command": "markdown_preview", "args": { "target": "browser" } },
+
+// Ctrl + [でオートコンプリートのパネルを閉じる
+{ "keys": ["ctrl+["], "command": "hide_auto_complete", "context":
+    [
+        { "key": "auto_complete_visible", "operator": "equal", "operand": true }
+    ]
+}
+</code></pre>
+
+<p>]</p>
+
+<p>```</p>
+
+<h3>インストールしたパッケージ (2013-02-14)</h3>
+
+<p>Packages/User/Package\ Control.sublime-settings</p>
+
+<p>```json
+{</p>
+
+<pre><code>"installed_packages":
+[
+    "Abacus",
+    "All Autocomplete",
+    "Auto Encoding for Ruby",
+    "BracketHighlighter",
+    "Browser Refresh",
+    "CTags",
+    "Git",
+    "GitGutter",
+    "Gitignore",
+    "Guard",
+    "IndentGuides",
+    "LiveReload",
+    "Markdown Preview",
+    "MarkdownEditing",
+    "Package Control",
+    "Ruby on Rails snippets",
+    "RubyTest",
+    "Search Stack Overflow",
+    "Shell Turtlestein",
+    "SideBarEnhancements",
+    "SideBarGit",
+    "SublimeLinter",
+    "SublimePeek",
+    "SublimeREPL",
+    "SublimeServer",
+    "Theme - Phoenix",
+    "Theme - Soda",
+    "TrailingSpaces"
+]
+</code></pre>
+
+<p>}
+```</p>
+]]></content>
+  </entry>
+  
+</feed>

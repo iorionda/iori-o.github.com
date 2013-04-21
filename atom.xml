@@ -4,7 +4,7 @@
   <title><![CDATA[Hi Llight and The Deep Shade.]]></title>
   <link href="http://iori-o.github.io/atom.xml" rel="self"/>
   <link href="http://iori-o.github.io/"/>
-  <updated>2013-04-18T23:52:45+09:00</updated>
+  <updated>2013-04-22T00:23:41+09:00</updated>
   <id>http://iori-o.github.io/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
@@ -12,6 +12,366 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[SublimeText2 のインストールと設定]]></title>
+    <link href="http://iori-o.github.io/blog/2013/04/22/install-sublimetext2/"/>
+    <updated>2013-04-22T00:17:00+09:00</updated>
+    <id>http://iori-o.github.io/blog/2013/04/22/install-sublimetext2</id>
+    <content type="html"><![CDATA[<h2>ダウンロード</h2>
+
+<p><a href="http://www.sublimetext.com/">Sublime Text: The text editor you’ll fall in love with</a></p>
+
+<p>ダウンロードは <a href="http://www.sublimetext.com/2">http://www.sublimetext.com/2</a> から。</p>
+
+<p>他にも <a href="http://www.sublimetext.com/dev">Dev Builds</a> のダウンロードもすることができる。</p>
+
+<h2>Command Pallet を使う</h2>
+
+<p>TextMate と同様に Sublime Text2では <code>Command + Shift + p</code> で Command Pallet を開くことができる。
+Command Pallet 上でコマンド名をタイプするとコマンドが絞り込まれていくので必要なコマンドを選択して実行することができる。</p>
+
+<h2>Package Control のインストール</h2>
+
+<p>Sublime Text2 をインストールしたら、まずはじめにやっておいた方がいいのが Sublime Package Control をインストール。
+インストールするには control+`, またはメニューの <code>View &gt; Show Console</code> でコンソールを立ち上げて下記のコマンドを実行する。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">,</span><span class="nn">os</span><span class="p">;</span> <span class="n">pf</span><span class="o">=</span><span class="s">&#39;Package Control.sublime-package&#39;</span><span class="p">;</span> <span class="n">ipp</span><span class="o">=</span><span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span> <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span><span class="p">;</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">install_opener</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">ProxyHandler</span><span class="p">()));</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ipp</span><span class="p">,</span><span class="n">pf</span><span class="p">),</span><span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://sublime.wbond.net/&#39;</span><span class="o">+</span><span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="s">&#39;%20&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">());</span> <span class="k">print</span><span class="p">(</span><span class="s">&#39;Please restart Sublime Text to finish installation&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>実行後に再起動すると Package Control が使えるようになる。
+Command Pallet を開き <code>install</code> で絞り込むと <code>Package Controll: Install Package</code> というコマンドがあるので Enter する。
+実行するとクイックパネルに利用可能なパッケージが一覧表示されるので、インストールしたいパッケージの名前を入力する。
+インストールのステータスはエディタ下部のステータスエリアで確認することができる。</p>
+
+<p>Package Control で実行できるコマンドは <a href="http://wbond.net/sublime_packages/package_control/usage">http://wbond.net/sublime_packages/package_control/usage</a> を参照。</p>
+
+<h2>各種設定</h2>
+
+<h3>コマンドライン</h3>
+
+<p>まずはコマンドラインから Sublime Text2 を起動するために subl へのシンボリックリンクを作成する。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% ln -s <span class="s2">&quot;/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl&quot;</span> /usr/local/bin/subl
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="http://www.sublimetext.com/docs/2/osx_command_line.html">OS X Commnad Line</a></p>
+
+<h4>ヘルプの参照</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% subl --help
+</span><span class='line'>
+</span><span class='line'>Sublime Text 2 Build 2217
+</span><span class='line'>
+</span><span class='line'>Usage: subl <span class="o">[</span>arguments<span class="o">]</span> <span class="o">[</span>files<span class="o">]</span>         edit the given files
+</span><span class='line'>   or: subl <span class="o">[</span>arguments<span class="o">]</span> <span class="o">[</span>directories<span class="o">]</span>   open the given directories
+</span><span class='line'>   or: subl <span class="o">[</span>arguments<span class="o">]</span> -               edit stdin
+</span><span class='line'>
+</span><span class='line'>Arguments:
+</span><span class='line'>  --project &lt;project&gt;: Load the given project
+</span><span class='line'>  --command &lt;<span class="nb">command</span>&gt;: Run the given <span class="nb">command</span>
+</span><span class='line'>  -n or --new-window:  Open a new window
+</span><span class='line'>  -a or --add:         Add folders to the current window
+</span><span class='line'>  -w or --wait:        Wait <span class="k">for </span>the files to be closed before returning
+</span><span class='line'>  -b or --background:  Don<span class="err">&#39;</span>t activate the application
+</span><span class='line'>  -s or --stay:        Keep the application activated after closing the file
+</span><span class='line'>  -h or --help:        Show <span class="nb">help</span> <span class="o">(</span>this message<span class="o">)</span> and <span class="nb">exit</span>
+</span><span class='line'>  -v or --version:     Show version and <span class="nb">exit</span>
+</span><span class='line'>
+</span><span class='line'>--wait is implied <span class="k">if </span>reading from stdin. Use --stay to not switch back
+</span><span class='line'>to the terminal when a file is closed <span class="o">(</span>only relevant <span class="k">if </span>waiting <span class="k">for </span>a file<span class="o">)</span>.
+</span><span class='line'>
+</span><span class='line'>Filenames may be given a :line or :line:column suffix to open at a specific
+</span><span class='line'>location.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>テーマの適用</h3>
+
+<p>RailsCastsのテーマを適用する。
+まず、以下のリンクからRailsCastsのテーマを取得する
+<a href="http://media.railscasts.com/resources/textmate_theme.zip">Download RailsCasts Theme</a></p>
+
+<h4>設定方法</h4>
+
+<p>ダウンロードしたテーマファイルをSublime Text2のパッケージディレクトリへ配置する。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% cp ~/Downloads/Railscasts.tmTheme ~/Library/Application<span class="se">\ </span>Support/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/Packages/
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Sublime Text2を起動してメニューから<code>Sublime Text 2 &gt; Preference &gt; Color Scheme &gt; Railscasts</code>を選択する。</p>
+
+<h2>アイコンの変更</h2>
+
+<p><a href="https://github.com/dmatarazzo/Sublime-Text-2-Icon">dmatarazzo / Sublime-Text-2-Icon</a> から変更するアイコンを取得する。</p>
+
+<p>以下のコマンドを実行することでアイコンが置き換わる。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% git clone git://github.com/dmatarazzo/Sublime-Text-2-Icon.git
+</span><span class='line'>% ./mac_replace_icons
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>手動でアイコンを置き換える場合は、ターミナルで<code>open /Applications/Sublime\ Text\ 2.app/Contents/Resources/</code>を開いて icnsを上書きすればOK.</p>
+
+<h2>Dropbox で設定の共有</h2>
+
+<p>github を使って設定の共有をしたかったけど、方法がいまいち方法がわからなかったので Dropbox を使ってファイルの同期を設定した。</p>
+
+<ol>
+<li>Sublime Text 2 を終了させる。</li>
+<li>Dropbox に Sublime Text 2 ディレクトリを作成する。</li>
+<li>Sublime Text 2 の設定ファイルを Dropbox にコピーする。</li>
+<li>コピー元のファイルを削除する。</li>
+<li>シンボリックリンクを作成する。</li>
+</ol>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% mkdir -p ~/Dropbox/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/
+</span><span class='line'>% <span class="nb">cd</span> ~/Library/Application<span class="se">\ </span>Support/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/
+</span><span class='line'>% cp Installed Packages ~/Dropbox/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/
+</span><span class='line'>% cp Pristine Packages ~/Dropbox/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/
+</span><span class='line'>% cp Packages ~/Dropbox/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/
+</span><span class='line'>% rm Installed Packages Pristine Packages Packages
+</span><span class='line'>% ln -s ~/Dropbox/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/Installed<span class="se">\ </span>Packages .
+</span><span class='line'>% ln -s ~/Dropbox/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/Pristine Packages .
+</span><span class='line'>% ln -s  ~/Dropbox/Sublime<span class="se">\ </span>Text<span class="se">\ </span>2/Packages .
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>参考:
+<a href="http://wheels.onebuttonapps.net/2012/04/use-dropbox-to-store-your-sublime-text-2-settings/">Use Dropbox to store your Sublime Text 2 settings, themes and plugins</a></p>
+
+<h2>設定</h2>
+
+<p><code>Sublime Text2 &gt; Preferences &gt; Settings - User</code>から設定を編集できる。
+Default の設定が評価されてから、Userの設定が評価されるので上書きしたい内容をUserの設定に記述する。</p>
+
+<h3>現在の設定 (2013-02-14)</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nt">&quot;auto_complete_commit_on_tab&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;auto_complete_delay&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;bold_folder_labels&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;caret_style&quot;</span><span class="p">:</span> <span class="s2">&quot;phase&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;color_scheme&quot;</span><span class="p">:</span> <span class="s2">&quot;Packages/Railscasts.tmTheme&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;default_encoding&quot;</span><span class="p">:</span> <span class="s2">&quot;UTF-8&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;draw_minimap_border&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;draw_white_space&quot;</span><span class="p">:</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;font_face&quot;</span><span class="p">:</span> <span class="s2">&quot;Ricty Discord Regular&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;font_size&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;highlight_line&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;ignored_packages&quot;</span><span class="p">:</span>
+</span><span class='line'>    <span class="p">[</span>
+</span><span class='line'>        <span class="s2">&quot;Vintage&quot;</span>
+</span><span class='line'>    <span class="p">],</span>
+</span><span class='line'>    <span class="nt">&quot;indent_guide_options&quot;</span><span class="p">:</span>
+</span><span class='line'>    <span class="p">[</span>
+</span><span class='line'>        <span class="s2">&quot;draw_active&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;draw_normal&quot;</span>
+</span><span class='line'>    <span class="p">],</span>
+</span><span class='line'>    <span class="nt">&quot;indent_to_bracket&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;line_padding_bottom&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;line_padding_top&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;margin&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;match_brackets_angle&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;overlay_scroll_bars&quot;</span><span class="p">:</span> <span class="s2">&quot;enabled&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;rulers&quot;</span><span class="p">:</span>
+</span><span class='line'>    <span class="p">[</span>
+</span><span class='line'>        <span class="mi">80</span>
+</span><span class='line'>    <span class="p">],</span>
+</span><span class='line'>    <span class="nt">&quot;scroll_speed&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;theme&quot;</span><span class="p">:</span> <span class="s2">&quot;Phoenix Dark.sublime-theme&quot;</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;translate_tabs_to_spaces&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;trim_trailing_white_space_on_save&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;word_wrap&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+</span><span class='line'>    <span class="nt">&quot;wrap_with&quot;</span><span class="p">:</span> <span class="mi">80</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>キーマップ</h3>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">[</span>
+</span><span class='line'>    <span class="p">{</span> <span class="nt">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;super+alt+p&quot;</span><span class="p">],</span> <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;show_overlay&quot;</span><span class="p">,</span> <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&quot;overlay&quot;</span><span class="p">:</span> <span class="s2">&quot;command_palette&quot;</span><span class="p">,</span> <span class="nt">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;install&quot;</span><span class="p">}},</span>
+</span><span class='line'>    <span class="p">{</span> <span class="nt">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;alt+m&quot;</span><span class="p">],</span> <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;markdown_preview&quot;</span><span class="p">,</span> <span class="nt">&quot;args&quot;</span><span class="p">:</span> <span class="p">{</span> <span class="nt">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;browser&quot;</span> <span class="p">}</span> <span class="p">},</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="err">//</span> <span class="err">Ctrl</span> <span class="err">+</span> <span class="p">[</span><span class="err">でオートコンプリートのパネルを閉じる</span>
+</span><span class='line'>    <span class="p">{</span> <span class="nt">&quot;keys&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ctrl+[&quot;</span><span class="p">],</span> <span class="nt">&quot;command&quot;</span><span class="p">:</span> <span class="s2">&quot;hide_auto_complete&quot;</span><span class="p">,</span> <span class="nt">&quot;context&quot;</span><span class="p">:</span>
+</span><span class='line'>        <span class="p">[</span>
+</span><span class='line'>            <span class="p">{</span> <span class="nt">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;auto_complete_visible&quot;</span><span class="p">,</span> <span class="nt">&quot;operator&quot;</span><span class="p">:</span> <span class="s2">&quot;equal&quot;</span><span class="p">,</span> <span class="nt">&quot;operand&quot;</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span>
+</span><span class='line'>        <span class="p">]</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'><span class="p">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>インストールしたパッケージ (2013-02-14)</h3>
+
+<p>Packages/User/Package\ Control.sublime-settings</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='json'><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nt">&quot;installed_packages&quot;</span><span class="p">:</span>
+</span><span class='line'>    <span class="p">[</span>
+</span><span class='line'>        <span class="s2">&quot;Abacus&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;All Autocomplete&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;Auto Encoding for Ruby&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;BracketHighlighter&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;Browser Refresh&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;CTags&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;Git&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;GitGutter&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;Gitignore&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;Guard&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;IndentGuides&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;LiveReload&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;Markdown Preview&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;MarkdownEditing&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;Package Control&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;Ruby on Rails snippets&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;RubyTest&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;Search Stack Overflow&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;Shell Turtlestein&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;SideBarEnhancements&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;SideBarGit&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;SublimeLinter&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;SublimePeek&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;SublimeREPL&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;SublimeServer&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;Theme - Phoenix&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;Theme - Soda&quot;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s2">&quot;TrailingSpaces&quot;</span>
+</span><span class='line'>    <span class="p">]</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Macでhomebrewのzshを使う]]></title>
