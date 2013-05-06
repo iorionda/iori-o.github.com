@@ -5,24 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>nodebrew をインストールする方法 - Hi Llight and The Deep Shade.</title>
+  <title>bundle install 時に debugger-linecache で失敗したら - Hi Llight and The Deep Shade.</title>
   <meta name="author" content="Iori ONDA">
 
   
-  <meta name="description" content="nodebrew のインストール node.js をインストールするのに、nodebrewというバージョンマネージャーを利用する。
-install 自体は curl で行う。 1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-% curl -L git.io/nodebrew | perl &hellip;">
+  <meta name="description" content="とあるプロジェクトで bundle install を実行した時に発生したエラーと、その時に行った対応。 実行環境 Mac OS X ver.10.8.3
+rbenv 0.4.0
+ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-darwin12 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -31,7 +20,7 @@ install 自体は curl で行う。 1
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://iori-o.github.io/blog/2013/04/03/nodebrew-install/">
+  <link rel="canonical" href="http://iori-o.github.io/blog/2013/05/06/faild-on-debugger-linecache/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -101,7 +90,7 @@ install 自体は curl で行う。 1
   <header>
     
       
-        <h1 class="entry-title">Nodebrew をインストールする方法</h1>
+        <h1 class="entry-title">Bundle Install 時に Debugger-linecache で失敗したら</h1>
       
     
     
@@ -118,7 +107,7 @@ install 自体は curl で行う。 1
   
 
 
-<time datetime="2013-04-03T22:24:00+09:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2013</time>
+<time datetime="2013-05-06T14:54:00+09:00" pubdate data-updated="true">May 6<span>th</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -127,50 +116,19 @@ install 自体は curl で行う。 1
   </header>
 
 
-<div class="entry-content"><h2>nodebrew のインストール</h2>
+<div class="entry-content"><p>とあるプロジェクトで <code>bundle install</code> を実行した時に発生したエラーと、その時に行った対応。</p>
 
-<p>node.js をインストールするのに、<a href="https://github.com/hokaccha/nodebrew">nodebrew</a>というバージョンマネージャーを利用する。
-install 自体は <code>curl</code> で行う。</p>
+<h2>実行環境</h2>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>% curl -L git.io/nodebrew | perl - setup
-</span><span class='line'>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-</span><span class='line'>                                 Dload  Upload   Total   Spent    Left  Speed
-</span><span class='line'>100 18289  100 18289    0     0   7088      0  0:00:02  0:00:02 --:--:--  8028
-</span><span class='line'>fetching nodebrew...
-</span><span class='line'>install nodebrew in <span class="nv">$HOME</span>/.nodebrew
-</span><span class='line'>
-</span><span class='line'><span class="o">========================================</span>
-</span><span class='line'>Add path:
-</span><span class='line'>
-</span><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/.nodebrew/current/bin:<span class="nv">$PATH</span>
-</span><span class='line'><span class="o">========================================</span>
-</span></code></pre></td></tr></table></div></figure>
+<ul>
+<li>Mac OS X ver.10.8.3</li>
+<li>rbenv 0.4.0</li>
+<li>ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-darwin12.3.0]</li>
+<li>Bundler version 1.3.5</li>
+</ul>
 
 
-<h3>PATH を追加</h3>
-
-<p>.bashrc や .zshrc に PATH を追加する。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$HOME</span>/.nodebrew/current/bin:<span class="nv">$PATH</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>PATH を追加したら <code>source</code> するのを忘れないように。</p>
-
-<h3>インストールされたことを確認。</h3>
+<h2>bundle install 時に表示されたエラーの内容</h2>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -194,62 +152,91 @@ install 自体は <code>curl</code> で行う。</p>
 <span class='line-number'>20</span>
 <span class='line-number'>21</span>
 <span class='line-number'>22</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>% nodebrew <span class="nb">help</span>
-</span><span class='line'>nodebrew 0.6.2
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% bundle install --path<span class="o">=</span>vendor/bundle
+</span><span class='line'>Fetching <span class="nb">source </span>index from http://rubygems.org/
+</span><span class='line'>Using rake <span class="o">(</span>10.0.3<span class="o">)</span>
+</span><span class='line'><span class="o">(</span>中略<span class="o">)</span>
+</span><span class='line'>Using debugger-ruby_core_source <span class="o">(</span>1.1.5<span class="o">)</span>
+</span><span class='line'>Installing debugger-linecache <span class="o">(</span>1.1.2<span class="o">)</span>
+</span><span class='line'>Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.
 </span><span class='line'>
-</span><span class='line'>Usage:
-</span><span class='line'>    nodebrew <span class="nb">help                       </span>Show this message
-</span><span class='line'>    nodebrew install &lt;version&gt;          Download and install a &lt;version&gt; <span class="o">(</span>compile from <span class="nb">source</span><span class="o">)</span>
-</span><span class='line'>    nodebrew install-binary &lt;version&gt;   Download and install a &lt;version&gt; <span class="o">(</span>binary file<span class="o">)</span>
-</span><span class='line'>    nodebrew uninstall &lt;version&gt;        Uninstall a version
-</span><span class='line'>    nodebrew use &lt;version&gt;              Use &lt;version&gt;
-</span><span class='line'>    nodebrew list                       List installed versions
-</span><span class='line'>    nodebrew ls                         Alias <span class="k">for</span> <span class="sb">`</span>list<span class="sb">`</span>
-</span><span class='line'>    nodebrew ls-remote                  List remote versions
-</span><span class='line'>    nodebrew ls-all                     List remote and installed versions
-</span><span class='line'>    nodebrew <span class="nb">alias</span> &lt;key&gt; &lt;version&gt;      Set <span class="nb">alias </span>to version
-</span><span class='line'>    nodebrew <span class="nb">unalias</span> &lt;key&gt;              Remove <span class="nb">alias</span>
-</span><span class='line'><span class="nb">    </span>nodebrew clean &lt;version&gt; | all      Remove <span class="nb">source </span>file
-</span><span class='line'>    nodebrew selfupdate                 Update nodebrew
-</span><span class='line'>    nodebrew migrate-package &lt;version&gt;  Install global NPM packages contained in &lt;version&gt; to current version
+</span><span class='line'>        /usr/local/opt/rbenv/versions/1.9.3-p392/bin/ruby extconf.rb
+</span><span class='line'>        checking <span class="k">for </span>vm_core.h... no
+</span><span class='line'>        checking <span class="k">for </span>vm_core.h... no
+</span><span class='line'>        Makefile creation failed
+</span><span class='line'>        **************************************************************************
+</span><span class='line'>        No <span class="nb">source </span><span class="k">for </span>ruby-1.9.3-p392 provided with debugger-ruby_core_source gem.
+</span><span class='line'>        **************************************************************************
+</span><span class='line'>        *** extconf.rb failed ***
+</span><span class='line'>        Could not create Makefile due to some reason, probably lack of
+</span><span class='line'>        necessary libraries and/or headers.  Check the mkmf.log file <span class="k">for </span>more
+</span><span class='line'>        details.  You may need configuration options.
 </span><span class='line'>
-</span><span class='line'>Example:
-</span><span class='line'>    nodebrew install v0.6.0     Install a specific version number
-</span><span class='line'>    nodebrew use v0.6.0         Use a specific version number
+</span><span class='line'>Provided configuration options:
+</span><span class='line'>        --with-opt-dir
+</span><span class='line'>        --without-opt-dir
+</span><span class='line'>        --with-opt-include
+</span><span class='line'>        --without-opt-include<span class="o">=</span><span class="k">${</span><span class="nv">opt</span><span class="p">-dir</span><span class="k">}</span>/include
+</span><span class='line'>        --with-opt-lib
+</span><span class='line'>        --without-opt-lib<span class="o">=</span><span class="k">${</span><span class="nv">opt</span><span class="p">-dir</span><span class="k">}</span>/lib
+</span><span class='line'>        --with-make-prog
+</span><span class='line'>        --without-make-prog
+</span><span class='line'>        --srcdir<span class="o">=</span>.
+</span><span class='line'>        --curdir
+</span><span class='line'>        --ruby<span class="o">=</span>/usr/local/opt/rbenv/versions/1.9.3-p392/bin/ruby
+</span><span class='line'>        --with-ruby-dir
+</span><span class='line'>        --without-ruby-dir
+</span><span class='line'>        --with-ruby-include
+</span><span class='line'>        --without-ruby-include<span class="o">=</span><span class="k">${</span><span class="nv">ruby</span><span class="p">-dir</span><span class="k">}</span>/include
+</span><span class='line'>        --with-ruby-lib
+</span><span class='line'>        --without-ruby-lib<span class="o">=</span><span class="k">${</span><span class="nv">ruby</span><span class="p">-dir</span><span class="k">}</span>/lib
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>Gem files will remain installed in /Users/ONDA/rails_project/vendor/bundle/ruby/1.9.1/gems/debugger-linecache-1.1.2 <span class="k">for </span>inspection.
+</span><span class='line'>Results logged to /Users/ONDA/rails_project/vendor/bundle/ruby/1.9.1/gems/debugger-linecache-1.1.2/ext/trace_nums/gem_make.out
+</span><span class='line'>
+</span><span class='line'>An error occurred <span class="k">while </span>installing debugger-linecache <span class="o">(</span>1.1.2<span class="o">)</span>, and Bundler cannot <span class="k">continue</span>.
+</span><span class='line'>Make sure that <span class="sb">`</span>gem install debugger-linecache -v <span class="s1">&#39;1.1.2&#39;</span><span class="sb">`</span> succeeds before bundling.
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h3>node.js のインストール</h3>
+<p>※　一部プロジェクトの固有名称が出力されていたので編集している。</p>
 
-<p>node.js をバイナリからインストールする。</p>
+<h2>対応方法</h2>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>% nodebrew install-binary stable
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% bundle update debugger
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>ソースからインストールする場合は以下</p>
+<hr />
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>% nodebrew install stable
-</span></code></pre></td></tr></table></div></figure>
+<h2>参考</h2>
 
-
-<p>バージョンの切り替え</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>% nodebrew use stable
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>アンインストール</h3>
-
-<p>アンインストールするのもバージョンを指定するだけで簡単にできる。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>% nodebrew uninstall v0.8.18
-</span></code></pre></td></tr></table></div></figure>
-
+<p><a href="http://stackoverflow.com/questions/10916784/error-installing-debugger-linecache-in-ruby-1-9-3">http://stackoverflow.com/questions/10916784/error-installing-debugger-linecache-in-ruby-1-9-3</a></p>
 </div>
 
 
@@ -272,15 +259,21 @@ install 自体は <code>curl</code> で行う。</p>
   
 
 
-<time datetime="2013-04-03T22:24:00+09:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2013</time>
+<time datetime="2013-05-06T14:54:00+09:00" pubdate data-updated="true">May 6<span>th</span>, 2013</time>
       
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/bundle/'>bundle</a>, <a class='category' href='/blog/categories/ruby/'>ruby,</a>
+  
+</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://iori-o.github.io/blog/2013/04/03/nodebrew-install/" data-via="120reset" data-counturl="http://iori-o.github.io/blog/2013/04/03/nodebrew-install/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://iori-o.github.io/blog/2013/05/06/faild-on-debugger-linecache/" data-via="120reset" data-counturl="http://iori-o.github.io/blog/2013/05/06/faild-on-debugger-linecache/" >Tweet</a>
   
   
   
@@ -291,10 +284,8 @@ install 自体は <code>curl</code> で行う。</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left articlenav" href="/blog/2013/04/03/padrino-plugins/" title="Previous Post: Padrino の Plugin を使う">&laquo; Padrino の Plugin を使う</a>
+        <a class="basic-alignment left articlenav" href="/blog/2013/04/22/install-sublimetext2/" title="Previous Post: SublimeText2 のインストールと設定">&laquo; SublimeText2 のインストールと設定</a>
       
-      
-        <a class="basic-alignment right articlenav" href="/blog/2013/04/03/remove-password-file-from-github/" title="Next Post: GitHubに上げてしまったパスワードを書いたファイルを消す方法">GitHubに上げてしまったパスワードを書いたファイルを消す方法 &raquo;</a>
       
     </p>
   </footer>
@@ -389,8 +380,8 @@ install 自体は <code>curl</code> で行う。</p>
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://iori-o.github.io/blog/2013/04/03/nodebrew-install/';
-        var disqus_url = 'http://iori-o.github.io/blog/2013/04/03/nodebrew-install/';
+        var disqus_identifier = 'http://iori-o.github.io/blog/2013/05/06/faild-on-debugger-linecache/';
+        var disqus_url = 'http://iori-o.github.io/blog/2013/05/06/faild-on-debugger-linecache/';
         var disqus_script = 'embed.js';
       
     (function () {

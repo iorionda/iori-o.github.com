@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby, | Hi Llight and The Deep Shade.]]></title>
   <link href="http://iori-o.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://iori-o.github.io/"/>
-  <updated>2013-04-22T00:23:41+09:00</updated>
+  <updated>2013-05-06T15:15:27+09:00</updated>
   <id>http://iori-o.github.io/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
@@ -12,6 +12,92 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[bundle install 時に debugger-linecache で失敗したら]]></title>
+    <link href="http://iori-o.github.io/blog/2013/05/06/faild-on-debugger-linecache/"/>
+    <updated>2013-05-06T14:54:00+09:00</updated>
+    <id>http://iori-o.github.io/blog/2013/05/06/faild-on-debugger-linecache</id>
+    <content type="html"><![CDATA[<p>とあるプロジェクトで <code>bundle install</code> を実行した時に発生したエラーと、その時に行った対応。</p>
+
+<h2>実行環境</h2>
+
+<ul>
+<li>Mac OS X ver.10.8.3</li>
+<li>rbenv 0.4.0</li>
+<li>ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-darwin12.3.0]</li>
+<li>Bundler version 1.3.5</li>
+</ul>
+
+
+<h2>bundle install 時に表示されたエラーの内容</h2>
+
+<p>``` bash
+% bundle install --path=vendor/bundle
+Fetching source index from http://rubygems.org/
+Using rake (10.0.3)
+(中略)
+Using debugger-ruby_core_source (1.1.5)
+Installing debugger-linecache (1.1.2)
+Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.</p>
+
+<pre><code>    /usr/local/opt/rbenv/versions/1.9.3-p392/bin/ruby extconf.rb
+    checking for vm_core.h... no
+    checking for vm_core.h... no
+    Makefile creation failed
+    **************************************************************************
+    No source for ruby-1.9.3-p392 provided with debugger-ruby_core_source gem.
+    **************************************************************************
+    *** extconf.rb failed ***
+    Could not create Makefile due to some reason, probably lack of
+    necessary libraries and/or headers.  Check the mkmf.log file for more
+    details.  You may need configuration options.
+</code></pre>
+
+<p>Provided configuration options:</p>
+
+<pre><code>    --with-opt-dir
+    --without-opt-dir
+    --with-opt-include
+    --without-opt-include=${opt-dir}/include
+    --with-opt-lib
+    --without-opt-lib=${opt-dir}/lib
+    --with-make-prog
+    --without-make-prog
+    --srcdir=.
+    --curdir
+    --ruby=/usr/local/opt/rbenv/versions/1.9.3-p392/bin/ruby
+    --with-ruby-dir
+    --without-ruby-dir
+    --with-ruby-include
+    --without-ruby-include=${ruby-dir}/include
+    --with-ruby-lib
+    --without-ruby-lib=${ruby-dir}/lib
+</code></pre>
+
+<p>Gem files will remain installed in /Users/ONDA/rails_project/vendor/bundle/ruby/1.9.1/gems/debugger-linecache-1.1.2 for inspection.
+Results logged to /Users/ONDA/rails_project/vendor/bundle/ruby/1.9.1/gems/debugger-linecache-1.1.2/ext/trace_nums/gem_make.out</p>
+
+<p>An error occurred while installing debugger-linecache (1.1.2), and Bundler cannot continue.
+Make sure that <code>gem install debugger-linecache -v '1.1.2'</code> succeeds before bundling.</p>
+
+<p>```</p>
+
+<p>※　一部プロジェクトの固有名称が出力されていたので編集している。</p>
+
+<h2>対応方法</h2>
+
+<p><code>bash
+% bundle update debugger
+</code></p>
+
+<hr />
+
+<h2>参考</h2>
+
+<p><a href="http://stackoverflow.com/questions/10916784/error-installing-debugger-linecache-in-ruby-1-9-3">http://stackoverflow.com/questions/10916784/error-installing-debugger-linecache-in-ruby-1-9-3</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Padrino の Plugin を使う]]></title>

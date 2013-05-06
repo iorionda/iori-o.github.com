@@ -4,7 +4,7 @@
   <title><![CDATA[Hi Llight and The Deep Shade.]]></title>
   <link href="http://iori-o.github.io/atom.xml" rel="self"/>
   <link href="http://iori-o.github.io/"/>
-  <updated>2013-04-22T00:23:41+09:00</updated>
+  <updated>2013-05-06T15:15:27+09:00</updated>
   <id>http://iori-o.github.io/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
@@ -12,6 +12,135 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[bundle install 時に debugger-linecache で失敗したら]]></title>
+    <link href="http://iori-o.github.io/blog/2013/05/06/faild-on-debugger-linecache/"/>
+    <updated>2013-05-06T14:54:00+09:00</updated>
+    <id>http://iori-o.github.io/blog/2013/05/06/faild-on-debugger-linecache</id>
+    <content type="html"><![CDATA[<p>とあるプロジェクトで <code>bundle install</code> を実行した時に発生したエラーと、その時に行った対応。</p>
+
+<h2>実行環境</h2>
+
+<ul>
+<li>Mac OS X ver.10.8.3</li>
+<li>rbenv 0.4.0</li>
+<li>ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-darwin12.3.0]</li>
+<li>Bundler version 1.3.5</li>
+</ul>
+
+
+<h2>bundle install 時に表示されたエラーの内容</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% bundle install --path<span class="o">=</span>vendor/bundle
+</span><span class='line'>Fetching <span class="nb">source </span>index from http://rubygems.org/
+</span><span class='line'>Using rake <span class="o">(</span>10.0.3<span class="o">)</span>
+</span><span class='line'><span class="o">(</span>中略<span class="o">)</span>
+</span><span class='line'>Using debugger-ruby_core_source <span class="o">(</span>1.1.5<span class="o">)</span>
+</span><span class='line'>Installing debugger-linecache <span class="o">(</span>1.1.2<span class="o">)</span>
+</span><span class='line'>Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.
+</span><span class='line'>
+</span><span class='line'>        /usr/local/opt/rbenv/versions/1.9.3-p392/bin/ruby extconf.rb
+</span><span class='line'>        checking <span class="k">for </span>vm_core.h... no
+</span><span class='line'>        checking <span class="k">for </span>vm_core.h... no
+</span><span class='line'>        Makefile creation failed
+</span><span class='line'>        **************************************************************************
+</span><span class='line'>        No <span class="nb">source </span><span class="k">for </span>ruby-1.9.3-p392 provided with debugger-ruby_core_source gem.
+</span><span class='line'>        **************************************************************************
+</span><span class='line'>        *** extconf.rb failed ***
+</span><span class='line'>        Could not create Makefile due to some reason, probably lack of
+</span><span class='line'>        necessary libraries and/or headers.  Check the mkmf.log file <span class="k">for </span>more
+</span><span class='line'>        details.  You may need configuration options.
+</span><span class='line'>
+</span><span class='line'>Provided configuration options:
+</span><span class='line'>        --with-opt-dir
+</span><span class='line'>        --without-opt-dir
+</span><span class='line'>        --with-opt-include
+</span><span class='line'>        --without-opt-include<span class="o">=</span><span class="k">${</span><span class="nv">opt</span><span class="p">-dir</span><span class="k">}</span>/include
+</span><span class='line'>        --with-opt-lib
+</span><span class='line'>        --without-opt-lib<span class="o">=</span><span class="k">${</span><span class="nv">opt</span><span class="p">-dir</span><span class="k">}</span>/lib
+</span><span class='line'>        --with-make-prog
+</span><span class='line'>        --without-make-prog
+</span><span class='line'>        --srcdir<span class="o">=</span>.
+</span><span class='line'>        --curdir
+</span><span class='line'>        --ruby<span class="o">=</span>/usr/local/opt/rbenv/versions/1.9.3-p392/bin/ruby
+</span><span class='line'>        --with-ruby-dir
+</span><span class='line'>        --without-ruby-dir
+</span><span class='line'>        --with-ruby-include
+</span><span class='line'>        --without-ruby-include<span class="o">=</span><span class="k">${</span><span class="nv">ruby</span><span class="p">-dir</span><span class="k">}</span>/include
+</span><span class='line'>        --with-ruby-lib
+</span><span class='line'>        --without-ruby-lib<span class="o">=</span><span class="k">${</span><span class="nv">ruby</span><span class="p">-dir</span><span class="k">}</span>/lib
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>Gem files will remain installed in /Users/ONDA/rails_project/vendor/bundle/ruby/1.9.1/gems/debugger-linecache-1.1.2 <span class="k">for </span>inspection.
+</span><span class='line'>Results logged to /Users/ONDA/rails_project/vendor/bundle/ruby/1.9.1/gems/debugger-linecache-1.1.2/ext/trace_nums/gem_make.out
+</span><span class='line'>
+</span><span class='line'>An error occurred <span class="k">while </span>installing debugger-linecache <span class="o">(</span>1.1.2<span class="o">)</span>, and Bundler cannot <span class="k">continue</span>.
+</span><span class='line'>Make sure that <span class="sb">`</span>gem install debugger-linecache -v <span class="s1">&#39;1.1.2&#39;</span><span class="sb">`</span> succeeds before bundling.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>※　一部プロジェクトの固有名称が出力されていたので編集している。</p>
+
+<h2>対応方法</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% bundle update debugger
+</span></code></pre></td></tr></table></div></figure>
+
+
+<hr />
+
+<h2>参考</h2>
+
+<p><a href="http://stackoverflow.com/questions/10916784/error-installing-debugger-linecache-in-ruby-1-9-3">http://stackoverflow.com/questions/10916784/error-installing-debugger-linecache-in-ruby-1-9-3</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[SublimeText2 のインストールと設定]]></title>
@@ -24,7 +153,7 @@
 
 <p>ダウンロードは <a href="http://www.sublimetext.com/2">http://www.sublimetext.com/2</a> から。</p>
 
-<p>他にも <a href="http://www.sublimetext.com/dev">Dev Builds</a> のダウンロードもすることができる。</p>
+<p>他にも <a href="http://www.sublimetext.com/dev">Dev Builds</a> のダウンロードをすることもできる。</p>
 
 <h2>Command Pallet を使う</h2>
 
