@@ -4,7 +4,7 @@
   <title><![CDATA[Hi Llight and The Deep Shade.]]></title>
   <link href="http://iori-o.github.io/atom.xml" rel="self"/>
   <link href="http://iori-o.github.io/"/>
-  <updated>2013-05-06T15:43:55+09:00</updated>
+  <updated>2013-05-06T15:49:22+09:00</updated>
   <id>http://iori-o.github.io/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
@@ -157,6 +157,9 @@
 <p>ダウンロードは <a href="http://www.sublimetext.com/2">http://www.sublimetext.com/2</a> から。</p>
 
 <p>他にも <a href="http://www.sublimetext.com/dev">Dev Builds</a> のダウンロードをすることもできる。</p>
+
+<!-- more -->
+
 
 <h2>Command Pallet を使う</h2>
 
@@ -501,7 +504,9 @@ Default の設定が評価されてから、Userの設定が評価されるの�
 </span></code></pre></td></tr></table></div></figure>
 
 
+<h2>2013年5月6日追記</h2>
 
+<p>やっぱり emacs を使ってる。</p>
 ]]></content>
   </entry>
   
@@ -511,6 +516,9 @@ Default の設定が評価されてから、Userの設定が評価されるの�
     <updated>2013-04-17T23:02:00+09:00</updated>
     <id>http://iori-o.github.io/blog/2013/04/17/install-zsh-for-mac</id>
     <content type="html"><![CDATA[<p>何度目かのクリーンインストールをした時にログインシェルを変更するのを忘れていたのでメモ。</p>
+
+<!-- more -->
+
 
 <p>homebrew でインストールした zsh はそのままではログインシェルとして使うことができない。
 なので、シェルの PATH を通す必要がある。</p>
@@ -647,6 +655,9 @@ homebrew でいれた zsh を設定する場合は下のように <code>/usr/loc
     <content type="html"><![CDATA[<p>間違ってパスワードを書いたファイルをGitHubにPushしてしまった場合、対象のファイルを削除しても commit 履歴には残ってしまっている。
 これをコミットした履歴ごと削除するにはどうしたらいいか。</p>
 
+<!-- more -->
+
+
 <p>対応する方法を探していたら以下の公式のヘルプにまとまっていた。
 <a href="https://help.github.com/articles/remove-sensitive-data">Remove sensitive data</a></p>
 
@@ -678,6 +689,11 @@ homebrew でいれた zsh を設定する場合は下のように <code>/usr/loc
 
 <p>node.js をインストールするのに、<a href="https://github.com/hokaccha/nodebrew">nodebrew</a>というバージョンマネージャーを利用する。
 install 自体は <code>curl</code> で行う。</p>
+
+<!-- more -->
+
+
+
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -807,6 +823,9 @@ install 自体は <code>curl</code> で行う。</p>
     <id>http://iori-o.github.io/blog/2013/04/03/padrino-plugins</id>
     <content type="html"><![CDATA[<p><a href="http://www.padrinorb.com/">Padrino</a> にはテンプレートと同じような仕組みとして Plugin Generator がある。
 利用できるプラグインは<a href="https://github.com/padrino/padrino-recipes/tree/master/plugins/">padrino/padrino-recipes</a>で公開されている。</p>
+
+<!-- more -->
+
 
 <p>また、以下のコマンドで Plugin の一覧を参照できる。</p>
 
@@ -993,6 +1012,9 @@ install 自体は <code>curl</code> で行う。</p>
 
 <p>と書くようになった。</p>
 
+<!-- more -->
+
+
 <p>なぜ新しい記法を導入したかの説明は<a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">RSpec&#8217;s New Expectation Syntax</a>に書かれている。
 簡単にまとめると</p>
 
@@ -1089,6 +1111,9 @@ install 自体は <code>curl</code> で行う。</p>
 <p>上の４つくらいでしばらく悩んだ結果darkstripeに決めた。
 また気が変わったらテーマを変更するかも。</p>
 
+<!-- more -->
+
+
 <p>インストールの手順はReadmeを参考に実行した。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -1117,15 +1142,6 @@ install 自体は <code>curl</code> で行う。</p>
 
 
 <p>となってしまったので<a href="https://github.com/imathis/octopress/issues/117">ここ</a>をみて noglob を追加した。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[test]]></title>
-    <link href="http://iori-o.github.io/blog/2013/01/09/test/"/>
-    <updated>2013-01-09T00:56:00+09:00</updated>
-    <id>http://iori-o.github.io/blog/2013/01/09/test</id>
-    <content type="html"><![CDATA[<p>test.</p>
 ]]></content>
   </entry>
   

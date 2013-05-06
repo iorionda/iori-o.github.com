@@ -4,7 +4,7 @@
   <title><![CDATA[Category: mac, | Hi Llight and The Deep Shade.]]></title>
   <link href="http://iori-o.github.io/blog/categories/mac/atom.xml" rel="self"/>
   <link href="http://iori-o.github.io/"/>
-  <updated>2013-05-06T15:43:55+09:00</updated>
+  <updated>2013-05-06T15:49:22+09:00</updated>
   <id>http://iori-o.github.io/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
@@ -19,6 +19,9 @@
     <updated>2013-04-17T23:02:00+09:00</updated>
     <id>http://iori-o.github.io/blog/2013/04/17/install-zsh-for-mac</id>
     <content type="html"><![CDATA[<p>何度目かのクリーンインストールをした時にログインシェルを変更するのを忘れていたのでメモ。</p>
+
+<!-- more -->
+
 
 <p>homebrew でインストールした zsh はそのままではログインシェルとして使うことができない。
 なので、シェルの PATH を通す必要がある。</p>

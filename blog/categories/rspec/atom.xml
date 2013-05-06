@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rspec | Hi Llight and The Deep Shade.]]></title>
   <link href="http://iori-o.github.io/blog/categories/rspec/atom.xml" rel="self"/>
   <link href="http://iori-o.github.io/"/>
-  <updated>2013-05-06T15:43:55+09:00</updated>
+  <updated>2013-05-06T15:49:22+09:00</updated>
   <id>http://iori-o.github.io/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
@@ -33,6 +33,9 @@ expect(foo).not eq(bar)
 </code></p>
 
 <p>と書くようになった。</p>
+
+<!-- more -->
+
 
 <p>なぜ新しい記法を導入したかの説明は<a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">RSpec's New Expectation Syntax</a>に書かれている。
 簡単にまとめると</p>

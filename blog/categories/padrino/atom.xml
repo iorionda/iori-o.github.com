@@ -4,7 +4,7 @@
   <title><![CDATA[Category: padrino | Hi Llight and The Deep Shade.]]></title>
   <link href="http://iori-o.github.io/blog/categories/padrino/atom.xml" rel="self"/>
   <link href="http://iori-o.github.io/"/>
-  <updated>2013-05-06T15:43:55+09:00</updated>
+  <updated>2013-05-06T15:49:22+09:00</updated>
   <id>http://iori-o.github.io/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
@@ -20,6 +20,9 @@
     <id>http://iori-o.github.io/blog/2013/04/03/padrino-plugins</id>
     <content type="html"><![CDATA[<p><a href="http://www.padrinorb.com/">Padrino</a> にはテンプレートと同じような仕組みとして Plugin Generator がある。
 利用できるプラグインは<a href="https://github.com/padrino/padrino-recipes/tree/master/plugins/">padrino/padrino-recipes</a>で公開されている。</p>
+
+<!-- more -->
+
 
 <p>また、以下のコマンドで Plugin の一覧を参照できる。</p>
 

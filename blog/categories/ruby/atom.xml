@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby, | Hi Llight and The Deep Shade.]]></title>
   <link href="http://iori-o.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://iori-o.github.io/"/>
-  <updated>2013-05-06T15:43:55+09:00</updated>
+  <updated>2013-05-06T15:49:22+09:00</updated>
   <id>http://iori-o.github.io/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
@@ -109,6 +109,9 @@ Make sure that <code>gem install debugger-linecache -v '1.1.2'</code> succeeds b
     <id>http://iori-o.github.io/blog/2013/04/03/padrino-plugins</id>
     <content type="html"><![CDATA[<p><a href="http://www.padrinorb.com/">Padrino</a> にはテンプレートと同じような仕組みとして Plugin Generator がある。
 利用できるプラグインは<a href="https://github.com/padrino/padrino-recipes/tree/master/plugins/">padrino/padrino-recipes</a>で公開されている。</p>
+
+<!-- more -->
+
 
 <p>また、以下のコマンドで Plugin の一覧を参照できる。</p>
 
@@ -233,6 +236,9 @@ expect(foo).not eq(bar)
 </code></p>
 
 <p>と書くようになった。</p>
+
+<!-- more -->
+
 
 <p>なぜ新しい記法を導入したかの説明は<a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">RSpec's New Expectation Syntax</a>に書かれている。
 簡単にまとめると</p>
