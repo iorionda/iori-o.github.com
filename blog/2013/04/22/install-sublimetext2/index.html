@@ -508,6 +508,11 @@ Default の設定が評価されてから、Userの設定が評価されるの�
   
     <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
   
+  <!-- hatebu-start -->
+   
+   <a href="http://b.hatena.ne.jp/entry/\{\{ site.url \}\}\{\{ page.url \}\}" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+   
+   <!-- hatebu-end -->
 </div>
 
     
@@ -516,7 +521,7 @@ Default の設定が評価されてから、Userの設定が評価されるの�
         <a class="basic-alignment left articlenav" href="/blog/2013/04/17/install-zsh-for-mac/" title="Previous Post: Macでhomebrewのzshを使う">&laquo; Macでhomebrewのzshを使う</a>
       
       
-        <a class="basic-alignment right articlenav" href="/blog/2013/05/06/faild-on-debugger-linecache/" title="Next Post: bundle install 時に debugger-linecache で失敗したら">bundle install 時に debugger-linecache で失敗したら &raquo;</a>
+        <a class="basic-alignment right articlenav" href="/blog/2013/05/06/faild-on-debugger-linecache/" title="Next Post: bundle install 実行時に debugger-linecache で失敗した時の対応方法">bundle install 実行時に debugger-linecache で失敗した時の対応方法 &raquo;</a>
       
     </p>
   </footer>
@@ -532,12 +537,49 @@ Default の設定が評価されてから、Userの設定が評価されるの�
 
 <aside class="sidebar">
   
-    <section>
+    
+<section>
+  <h1>About Me</h1>
+  <div id="twitter-profile" style="margin-top:0.5em;">
+    <p>
+      <strong>Iori ONDA</strong> 
+      (<a href="http://twitter.com/120reset">@120reset</a>)
+    </p>
+    <p></p>
+  </div>
+  <script type="text/javascript">
+    $.domReady(function(){
+        var container = $('#twitter-profile'),
+            user = "120reset";
+        
+        function parseTwLinks(s) {
+          var twUrl = "http://www.twitter.com/"
+          s = s.replace(/ (@([\w]+))/g, function(match, p1, p2) {
+              return " <a href='"+twUrl+p2+"'>"+p1+"</a>"
+          }).replace(/ (#([\w]+))/g, function(match, p1, p2) {
+              return " <a href='"+twUrl+"#!/search?q=%23"+p2+"'>"+p1+"</a>"
+          })
+          return s
+        }
+
+        $.ajax({
+            url: "http://api.twitter.com/1/users/show.json?include_entities=false&screen_name="+user+"&callback=?"
+          , type: 'jsonp'
+          , error: function (err) { $('#twitter-profile').addClass('error');  }
+          , success: function(data) {
+              container.html('<img class="left" src="http://api.twitter.com/1/users/profile_image/'+user+'.json?size=bigger" alt="@'+user+'"><p><strong>'+data.name+'</strong> (<a href="http://twitter.com/'+user+'">@'+user+'</a>)<br/>'+data.location+'</p><p>'+parseTwLinks(data.description)+'</p>');
+            }
+        })
+      });
+  </script>
+</section>
+
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/05/06/faild-on-debugger-linecache/">bundle install 時に debugger-linecache で失敗したら</a>
+        <a href="/blog/2013/05/06/faild-on-debugger-linecache/">bundle install 実行時に debugger-linecache で失敗した時の対応方法</a>
       </li>
     
       <li class="post">

@@ -5,13 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>bundle install 時に debugger-linecache で失敗したら - Hi Llight and The Deep Shade.</title>
+  <title>bundle install 実行時に debugger-linecache で失敗した時の対応方法 - Hi Llight and The Deep Shade.</title>
   <meta name="author" content="Iori ONDA">
 
   
-  <meta name="description" content="とあるプロジェクトで bundle install を実行した時に発生したエラーと、その時に行った対応。 実行環境 Mac OS X ver.10.8.3
+  <meta name="description" content="とあるプロジェクトで bundle install を実行した時に発生したエラーとその時に行った対応方法。 実行環境 Mac OS X ver.10.8.3
 rbenv 0.4.0
-ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-darwin12 &hellip;">
+ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -90,7 +90,7 @@ ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-darwin12 &hellip;">
   <header>
     
       
-        <h1 class="entry-title">Bundle Install 時に Debugger-linecache で失敗したら</h1>
+        <h1 class="entry-title">Bundle Install 実行時に Debugger-linecache で失敗した時の対応方法</h1>
       
     
     
@@ -116,7 +116,7 @@ ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-darwin12 &hellip;">
   </header>
 
 
-<div class="entry-content"><p>とあるプロジェクトで <code>bundle install</code> を実行した時に発生したエラーと、その時に行った対応。</p>
+<div class="entry-content"><p>とあるプロジェクトで <code>bundle install</code> を実行した時に発生したエラーとその時に行った対応方法。</p>
 
 <h2>実行環境</h2>
 
@@ -126,6 +126,9 @@ ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-darwin12 &hellip;">
 <li>ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-darwin12.3.0]</li>
 <li>Bundler version 1.3.5</li>
 </ul>
+
+
+<!-- more -->
 
 
 <h2>bundle install 時に表示されたエラーの内容</h2>
@@ -279,6 +282,11 @@ ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-darwin12 &hellip;">
   
     <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
   
+  <!-- hatebu-start -->
+   
+   <a href="http://b.hatena.ne.jp/entry/\{\{ site.url \}\}\{\{ page.url \}\}" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+   
+   <!-- hatebu-end -->
 </div>
 
     
@@ -301,12 +309,49 @@ ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-darwin12 &hellip;">
 
 <aside class="sidebar">
   
-    <section>
+    
+<section>
+  <h1>About Me</h1>
+  <div id="twitter-profile" style="margin-top:0.5em;">
+    <p>
+      <strong>Iori ONDA</strong> 
+      (<a href="http://twitter.com/120reset">@120reset</a>)
+    </p>
+    <p></p>
+  </div>
+  <script type="text/javascript">
+    $.domReady(function(){
+        var container = $('#twitter-profile'),
+            user = "120reset";
+        
+        function parseTwLinks(s) {
+          var twUrl = "http://www.twitter.com/"
+          s = s.replace(/ (@([\w]+))/g, function(match, p1, p2) {
+              return " <a href='"+twUrl+p2+"'>"+p1+"</a>"
+          }).replace(/ (#([\w]+))/g, function(match, p1, p2) {
+              return " <a href='"+twUrl+"#!/search?q=%23"+p2+"'>"+p1+"</a>"
+          })
+          return s
+        }
+
+        $.ajax({
+            url: "http://api.twitter.com/1/users/show.json?include_entities=false&screen_name="+user+"&callback=?"
+          , type: 'jsonp'
+          , error: function (err) { $('#twitter-profile').addClass('error');  }
+          , success: function(data) {
+              container.html('<img class="left" src="http://api.twitter.com/1/users/profile_image/'+user+'.json?size=bigger" alt="@'+user+'"><p><strong>'+data.name+'</strong> (<a href="http://twitter.com/'+user+'">@'+user+'</a>)<br/>'+data.location+'</p><p>'+parseTwLinks(data.description)+'</p>');
+            }
+        })
+      });
+  </script>
+</section>
+
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/05/06/faild-on-debugger-linecache/">bundle install 時に debugger-linecache で失敗したら</a>
+        <a href="/blog/2013/05/06/faild-on-debugger-linecache/">bundle install 実行時に debugger-linecache で失敗した時の対応方法</a>
       </li>
     
       <li class="post">

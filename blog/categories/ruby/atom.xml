@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby, | Hi Llight and The Deep Shade.]]></title>
   <link href="http://iori-o.github.io/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://iori-o.github.io/"/>
-  <updated>2013-05-06T15:15:27+09:00</updated>
+  <updated>2013-05-06T15:40:05+09:00</updated>
   <id>http://iori-o.github.io/</id>
   <author>
     <name><![CDATA[Iori ONDA]]></name>
@@ -14,11 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[bundle install 時に debugger-linecache で失敗したら]]></title>
+    <title type="html"><![CDATA[bundle install 実行時に debugger-linecache で失敗した時の対応方法]]></title>
     <link href="http://iori-o.github.io/blog/2013/05/06/faild-on-debugger-linecache/"/>
     <updated>2013-05-06T14:54:00+09:00</updated>
     <id>http://iori-o.github.io/blog/2013/05/06/faild-on-debugger-linecache</id>
-    <content type="html"><![CDATA[<p>とあるプロジェクトで <code>bundle install</code> を実行した時に発生したエラーと、その時に行った対応。</p>
+    <content type="html"><![CDATA[<p>とあるプロジェクトで <code>bundle install</code> を実行した時に発生したエラーとその時に行った対応方法。</p>
 
 <h2>実行環境</h2>
 
@@ -28,6 +28,9 @@
 <li>ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-darwin12.3.0]</li>
 <li>Bundler version 1.3.5</li>
 </ul>
+
+
+<!-- more -->
 
 
 <h2>bundle install 時に表示されたエラーの内容</h2>

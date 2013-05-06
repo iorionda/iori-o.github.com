@@ -99,7 +99,7 @@
 
 <article>
   
-<h1><a href="/blog/2013/05/06/faild-on-debugger-linecache/">bundle install 時に debugger-linecache で失敗したら</a></h1>
+<h1><a href="/blog/2013/05/06/faild-on-debugger-linecache/">bundle install 実行時に debugger-linecache で失敗した時の対応方法</a></h1>
 <time datetime="2013-05-06T14:54:00+09:00" pubdate><span class='month'>May</span> <span class='day'>06</span> <span class='year'>2013</span></time>
 
 <footer>
@@ -118,12 +118,49 @@
 
 <aside class="sidebar">
   
-    <section>
+    
+<section>
+  <h1>About Me</h1>
+  <div id="twitter-profile" style="margin-top:0.5em;">
+    <p>
+      <strong>Iori ONDA</strong> 
+      (<a href="http://twitter.com/120reset">@120reset</a>)
+    </p>
+    <p></p>
+  </div>
+  <script type="text/javascript">
+    $.domReady(function(){
+        var container = $('#twitter-profile'),
+            user = "120reset";
+        
+        function parseTwLinks(s) {
+          var twUrl = "http://www.twitter.com/"
+          s = s.replace(/ (@([\w]+))/g, function(match, p1, p2) {
+              return " <a href='"+twUrl+p2+"'>"+p1+"</a>"
+          }).replace(/ (#([\w]+))/g, function(match, p1, p2) {
+              return " <a href='"+twUrl+"#!/search?q=%23"+p2+"'>"+p1+"</a>"
+          })
+          return s
+        }
+
+        $.ajax({
+            url: "http://api.twitter.com/1/users/show.json?include_entities=false&screen_name="+user+"&callback=?"
+          , type: 'jsonp'
+          , error: function (err) { $('#twitter-profile').addClass('error');  }
+          , success: function(data) {
+              container.html('<img class="left" src="http://api.twitter.com/1/users/profile_image/'+user+'.json?size=bigger" alt="@'+user+'"><p><strong>'+data.name+'</strong> (<a href="http://twitter.com/'+user+'">@'+user+'</a>)<br/>'+data.location+'</p><p>'+parseTwLinks(data.description)+'</p>');
+            }
+        })
+      });
+  </script>
+</section>
+
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/05/06/faild-on-debugger-linecache/">bundle install 時に debugger-linecache で失敗したら</a>
+        <a href="/blog/2013/05/06/faild-on-debugger-linecache/">bundle install 実行時に debugger-linecache で失敗した時の対応方法</a>
       </li>
     
       <li class="post">
