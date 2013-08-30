@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: chrome | Hi Llight and The Deep Shade.]]></title>
+  <link href="http://iori-o.github.io/blog/categories/chrome/atom.xml" rel="self"/>
+  <link href="http://iori-o.github.io/"/>
+  <updated>2013-05-06T15:52:08+09:00</updated>
+  <id>http://iori-o.github.io/</id>
+  <author>
+    <name><![CDATA[Iori ONDA]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[すぐにもがちゃん（最上もが）を見れるGoogle Chromeの拡張作った。]]></title>
+    <link href="http://iori-o.github.io/blog/2013/02/14/google-chrome-extension-which-can-see-mogamimoga/"/>
+    <updated>2013-02-14T01:25:00+09:00</updated>
+    <id>http://iori-o.github.io/blog/2013/02/14/google-chrome-extension-which-can-see-mogamimoga</id>
+    <content type="html"><![CDATA[<p>生きていればつらいことがある。
+しかし、つらいからと言って簡単に投げ出す事は出来ないということも多い。</p>
+
+<p>みなさんもつらまってる時、よくもがちゃん（最上もが）を見ると思う。
+当然のごとく僕もそうである。</p>
+
+<p>最近つらい事がよくある。</p>
+
+<p>そんな時のために、もがちゃん（最上もが）を素早く表示する必要があった。</p>
+
+<p>なので、もがちゃん（最上もが）をすぐ見れるGoogle Chromeの拡張を作った。</p>
+
+<p>「だめだ。もうやってらねー」って時は、空の tab を表示すればすぐもがちゃん（最上もが）に会える。最高。<s>結婚したい。</s></p>
+
+<p><img src="http://iori-o.github.io/post_images/moga-snap.jpg"></p>
+
+<p><a href="https://github.com/iori-o/chrome-tumblr-tile">iori-o / chrome-tumblr-tile</a></p>
+
+<p>元ネタは追いかけていなかったんだけど、FBで <a href="http://www.ysakmrkm.com/2013/02/google_chrome_extension_which_can_see_a-rin.html">ムラカミくんのBlog</a> をみてすぐに fork してしまった。
+そしてTumblrで新しいURL取得して、API key取得してもがちゃんの画像集めて、もがちゃんが可愛くて仕事に集中できない。</p>
+
+<p>README.md に</p>
+
+<blockquote><p>you don't have to fork this repository for only changing hostname.</p></blockquote>
+
+<p>とあるので、別に fork しないでも hostname の変更はオプションからできます。</p>
+
+<h3>追記</h3>
+
+<p>せっかく fork したので icon を追加したり背景を変えたりと色々やってます。</p>
+
+<p>奇しくもバレンタインデーになったので、もがちゃんチョコください。</p>
+
+<hr />
+
+<p>inspired:</p>
+
+<p><a href="http://soh335.hatenablog.com/entry/2013/02/10/011039">すぐに宮崎あおいを見れるGoogle Chromeの拡張作った。</a></p>
+
+<p><a href="http://www.ysakmrkm.com/2013/02/google_chrome_extension_which_can_see_a-rin.html">すぐにあーりん（佐々木彩夏）を見れるGoogle Chromeの拡張作った。</a></p>
+]]></content>
+  </entry>
+  
+</feed>

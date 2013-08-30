@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: padrino | Hi Llight and The Deep Shade.]]></title>
+  <link href="http://iori-o.github.io/blog/categories/padrino/atom.xml" rel="self"/>
+  <link href="http://iori-o.github.io/"/>
+  <updated>2013-05-06T15:52:08+09:00</updated>
+  <id>http://iori-o.github.io/</id>
+  <author>
+    <name><![CDATA[Iori ONDA]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Padrino の Plugin を使う]]></title>
+    <link href="http://iori-o.github.io/blog/2013/04/03/padrino-plugins/"/>
+    <updated>2013-04-03T22:18:00+09:00</updated>
+    <id>http://iori-o.github.io/blog/2013/04/03/padrino-plugins</id>
+    <content type="html"><![CDATA[<p><a href="http://www.padrinorb.com/">Padrino</a> にはテンプレートと同じような仕組みとして Plugin Generator がある。
+利用できるプラグインは<a href="https://github.com/padrino/padrino-recipes/tree/master/plugins/">padrino/padrino-recipes</a>で公開されている。</p>
+
+<!-- more -->
+
+
+<p>また、以下のコマンドで Plugin の一覧を参照できる。</p>
+
+<p><code>bash
+% padrino g plugin -l
+Available plugins:
+  - ["960"]
+  - ["access"]
+  - ["ar_permalink_i18n"]
+  - ["ar_permalink"]
+  - ["ar_textile"]
+  - ["ar_translate"]
+  - ["auto_locale"]
+  - ["barista"]
+  - ["better_errors"]
+  - ["blueprint"]
+  - ["bootstrap"]
+  - ["bug"]
+  - ["carrierwave"]
+  - ["codehighlighter"]
+  - ["coderay"]
+  - ["coffee"]
+  - ["deflect"]
+  - ["disqus"]
+  - ["dreamhost"]
+  - ["exception_notifier"]
+  - ["flash_session"]
+  - ["fluxflex"]
+  - ["googleanalytics"]
+  - ["heroku"]
+  - ["hoptoad"]
+  - ["jammit"]
+  - ["maintenance"]
+  - ["omniauth"]
+  - ["openid"]
+  - ["payment"]
+  - ["recaptcha"]
+  - ["resque"]
+  - ["rewrite"]
+  - ["secure_only"]
+  - ["tripoli"]
+  - ["vcr"]
+  - ["watchr"]
+  - ["will_paginate"]
+</code></p>
+
+<h2>Plugin の適用</h2>
+
+<p>Plugin は作成したプロジェクトに適用することができる。</p>
+
+<p><code>bash
+% padrino g plugin [template_path]
+</code></p>
+
+<p>今回は新規プロジェクトに better_errors を追加した。</p>
+
+<p>``` bash
+% padrino g plugin better_errors</p>
+
+<pre><code>   apply  https://github.com/padrino/padrino-recipes/raw/master/plugins/better_errors_plugin.rb
+  append    Gemfile
+  insert    config/boot.rb
+</code></pre>
+
+<p>```</p>
+
+<p>それぞれのファイルの変更点を確認してみる。</p>
+
+<ul>
+<li><p>Gemfile
+``` ruby</p>
+
+<h1>Better Errors</h1>
+
+<p>group :development do
+gem "better_errors"
+gem "binding_of_caller"
+end
+```</p></li>
+<li><p>config/boot.rb
+``` ruby</p>
+
+<h1>Setup better_errors</h1>
+
+<p>if Padrino.env == :development
+require 'better_errors'
+Padrino::Application.use BetterErrors::Middleware
+BetterErrors.application_root = PADRINO_ROOT
+BetterErrors.logger = Padrino.logger
+end
+```</p></li>
+</ul>
+
+
+<p>この状態で</p>
+
+<p><code>bash
+% bundle install
+</code></p>
+
+<p>すると利用できるようになる。</p>
+]]></content>
+  </entry>
+  
+</feed>

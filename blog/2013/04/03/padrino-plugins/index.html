@@ -1,0 +1,519 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Padrino の Plugin を使う - Hi Llight and The Deep Shade.</title>
+  <meta name="author" content="Iori ONDA">
+
+  
+  <meta name="description" content="Padrino にはテンプレートと同じような仕組みとして Plugin Generator がある。
+利用できるプラグインはpadrino/padrino-recipesで公開されている。 また、以下のコマンドで Plugin の一覧を参照できる。 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://iori-o.github.io/blog/2013/04/03/padrino-plugins/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Hi Llight and The Deep Shade." type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-40237672-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText">120reset</div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">Hi Llight and The Deep Shade.</a></h1>
+  
+    <h2>A blogging framework for hackers.</h2>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:iori-o.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Padrino の Plugin を使う</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-03T22:18:00+09:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><a href="http://www.padrinorb.com/">Padrino</a> にはテンプレートと同じような仕組みとして Plugin Generator がある。
+利用できるプラグインは<a href="https://github.com/padrino/padrino-recipes/tree/master/plugins/">padrino/padrino-recipes</a>で公開されている。</p>
+
+<!-- more -->
+
+
+<p>また、以下のコマンドで Plugin の一覧を参照できる。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% padrino g plugin -l
+</span><span class='line'>Available plugins:
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;960&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;access&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;ar_permalink_i18n&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;ar_permalink&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;ar_textile&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;ar_translate&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;auto_locale&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;barista&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;better_errors&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;blueprint&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;bootstrap&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;bug&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;carrierwave&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;codehighlighter&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;coderay&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;coffee&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;deflect&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;disqus&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;dreamhost&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;exception_notifier&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;flash_session&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;fluxflex&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;googleanalytics&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;heroku&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;hoptoad&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;jammit&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;maintenance&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;omniauth&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;openid&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;payment&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;recaptcha&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;resque&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;rewrite&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;secure_only&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;tripoli&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;vcr&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;watchr&quot;</span><span class="o">]</span>
+</span><span class='line'>  - <span class="o">[</span><span class="s2">&quot;will_paginate&quot;</span><span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>Plugin の適用</h2>
+
+<p>Plugin は作成したプロジェクトに適用することができる。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% padrino g plugin <span class="o">[</span>template_path<span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>今回は新規プロジェクトに better_errors を追加した。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% padrino g plugin better_errors
+</span><span class='line'>       apply  https://github.com/padrino/padrino-recipes/raw/master/plugins/better_errors_plugin.rb
+</span><span class='line'>      append    Gemfile
+</span><span class='line'>      insert    config/boot.rb
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>それぞれのファイルの変更点を確認してみる。</p>
+
+<ul>
+<li>Gemfile</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Better Errors</span>
+</span><span class='line'><span class="n">group</span> <span class="ss">:development</span> <span class="k">do</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;better_errors&quot;</span>
+</span><span class='line'>  <span class="n">gem</span> <span class="s2">&quot;binding_of_caller&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li>config/boot.rb</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Setup better_errors</span>
+</span><span class='line'><span class="k">if</span> <span class="no">Padrino</span><span class="o">.</span><span class="n">env</span> <span class="o">==</span> <span class="ss">:development</span>
+</span><span class='line'>  <span class="nb">require</span> <span class="s1">&#39;better_errors&#39;</span>
+</span><span class='line'>  <span class="ss">Padrino</span><span class="p">:</span><span class="ss">:Application</span><span class="o">.</span><span class="n">use</span> <span class="ss">BetterErrors</span><span class="p">:</span><span class="ss">:Middleware</span>
+</span><span class='line'>  <span class="no">BetterErrors</span><span class="o">.</span><span class="n">application_root</span> <span class="o">=</span> <span class="no">PADRINO_ROOT</span>
+</span><span class='line'>  <span class="no">BetterErrors</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="no">Padrino</span><span class="o">.</span><span class="n">logger</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>この状態で</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>% bundle install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>すると利用できるようになる。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Iori ONDA</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-04-03T22:18:00+09:00" pubdate data-updated="true">Apr 3<span>rd</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/padrino/'>padrino</a>, <a class='category' href='/blog/categories/ruby/'>ruby,</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://iori-o.github.io/blog/2013/04/03/padrino-plugins/" data-via="120reset" data-counturl="http://iori-o.github.io/blog/2013/04/03/padrino-plugins/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+  <!-- hatebu-start -->
+   
+   <a href="http://b.hatena.ne.jp/entry/http://iori-o.github.io/blog/2013/04/03/padrino-plugins/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+   
+   <!-- hatebu-end -->
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2013/04/03/rspec-expectations/" title="Previous Post: Rspec の expect 記法を使ったテストの書き方">&laquo; Rspec の expect 記法を使ったテストの書き方</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/blog/2013/04/03/nodebrew-install/" title="Next Post: nodebrew をインストールする方法">nodebrew をインストールする方法 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    
+<section>
+  <h1>About Me</h1>
+  <div id="twitter-profile" style="margin-top:0.5em;">
+    <p>
+      <strong>Iori ONDA</strong> 
+      (<a href="http://twitter.com/120reset">@120reset</a>)
+    </p>
+    <p></p>
+  </div>
+  <script type="text/javascript">
+    $.domReady(function(){
+        var container = $('#twitter-profile'),
+            user = "120reset";
+        
+        function parseTwLinks(s) {
+          var twUrl = "http://www.twitter.com/"
+          s = s.replace(/ (@([\w]+))/g, function(match, p1, p2) {
+              return " <a href='"+twUrl+p2+"'>"+p1+"</a>"
+          }).replace(/ (#([\w]+))/g, function(match, p1, p2) {
+              return " <a href='"+twUrl+"#!/search?q=%23"+p2+"'>"+p1+"</a>"
+          })
+          return s
+        }
+
+        $.ajax({
+            url: "http://api.twitter.com/1/users/show.json?include_entities=false&screen_name="+user+"&callback=?"
+          , type: 'jsonp'
+          , error: function (err) { $('#twitter-profile').addClass('error');  }
+          , success: function(data) {
+              container.html('<img class="left" src="http://api.twitter.com/1/users/profile_image/'+user+'.json?size=bigger" alt="@'+user+'"><p><strong>'+data.name+'</strong> (<a href="http://twitter.com/'+user+'">@'+user+'</a>)<br/>'+data.location+'</p><p>'+parseTwLinks(data.description)+'</p>');
+            }
+        })
+      });
+  </script>
+</section>
+
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/05/06/failed-on-debugger-linecache/">bundle install 実行時に debugger-linecache で失敗した時の対応方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/22/install-sublimetext2/">SublimeText2 のインストールと設定</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/17/install-zsh-for-mac/">Macでhomebrewのzshを使う</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/03/remove-password-file-from-github/">GitHubに上げてしまったパスワードを書いたファイルを消す方法</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/04/03/nodebrew-install/">nodebrew をインストールする方法</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/iori-o">@iori-o</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'iori-o',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Iori ONDA -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'IoriONDA';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://iori-o.github.io/blog/2013/04/03/padrino-plugins/';
+        var disqus_url = 'http://iori-o.github.io/blog/2013/04/03/padrino-plugins/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ruby, | Hi Llight and The Deep Shade.]]></title>
+  <link href="http://iori-o.github.io/blog/categories/ruby/atom.xml" rel="self"/>
+  <link href="http://iori-o.github.io/"/>
+  <updated>2013-05-06T15:52:08+09:00</updated>
+  <id>http://iori-o.github.io/</id>
+  <author>
+    <name><![CDATA[Iori ONDA]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[bundle install 実行時に debugger-linecache で失敗した時の対応方法]]></title>
+    <link href="http://iori-o.github.io/blog/2013/05/06/failed-on-debugger-linecache/"/>
+    <updated>2013-05-06T14:54:00+09:00</updated>
+    <id>http://iori-o.github.io/blog/2013/05/06/failed-on-debugger-linecache</id>
+    <content type="html"><![CDATA[<p>とあるプロジェクトで <code>bundle install</code> を実行した時に発生したエラーとその時に行った対応方法。</p>
+
+<h2>実行環境</h2>
+
+<ul>
+<li>Mac OS X ver.10.8.3</li>
+<li>rbenv 0.4.0</li>
+<li>ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64-darwin12.3.0]</li>
+<li>Bundler version 1.3.5</li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>bundle install 時に表示されたエラーの内容</h2>
+
+<p>``` bash
+% bundle install --path=vendor/bundle
+Fetching source index from http://rubygems.org/
+Using rake (10.0.3)
+(中略)
+Using debugger-ruby_core_source (1.1.5)
+Installing debugger-linecache (1.1.2)
+Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.</p>
+
+<pre><code>    /usr/local/opt/rbenv/versions/1.9.3-p392/bin/ruby extconf.rb
+    checking for vm_core.h... no
+    checking for vm_core.h... no
+    Makefile creation failed
+    **************************************************************************
+    No source for ruby-1.9.3-p392 provided with debugger-ruby_core_source gem.
+    **************************************************************************
+    *** extconf.rb failed ***
+    Could not create Makefile due to some reason, probably lack of
+    necessary libraries and/or headers.  Check the mkmf.log file for more
+    details.  You may need configuration options.
+</code></pre>
+
+<p>Provided configuration options:</p>
+
+<pre><code>    --with-opt-dir
+    --without-opt-dir
+    --with-opt-include
+    --without-opt-include=${opt-dir}/include
+    --with-opt-lib
+    --without-opt-lib=${opt-dir}/lib
+    --with-make-prog
+    --without-make-prog
+    --srcdir=.
+    --curdir
+    --ruby=/usr/local/opt/rbenv/versions/1.9.3-p392/bin/ruby
+    --with-ruby-dir
+    --without-ruby-dir
+    --with-ruby-include
+    --without-ruby-include=${ruby-dir}/include
+    --with-ruby-lib
+    --without-ruby-lib=${ruby-dir}/lib
+</code></pre>
+
+<p>Gem files will remain installed in /Users/ONDA/rails_project/vendor/bundle/ruby/1.9.1/gems/debugger-linecache-1.1.2 for inspection.
+Results logged to /Users/ONDA/rails_project/vendor/bundle/ruby/1.9.1/gems/debugger-linecache-1.1.2/ext/trace_nums/gem_make.out</p>
+
+<p>An error occurred while installing debugger-linecache (1.1.2), and Bundler cannot continue.
+Make sure that <code>gem install debugger-linecache -v '1.1.2'</code> succeeds before bundling.</p>
+
+<p>```</p>
+
+<p>※　一部プロジェクトの固有名称が出力されていたので編集している。</p>
+
+<h2>対応方法</h2>
+
+<p><code>bash
+% bundle update debugger
+</code></p>
+
+<hr />
+
+<h2>参考</h2>
+
+<p><a href="http://stackoverflow.com/questions/10916784/error-installing-debugger-linecache-in-ruby-1-9-3">http://stackoverflow.com/questions/10916784/error-installing-debugger-linecache-in-ruby-1-9-3</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Padrino の Plugin を使う]]></title>
+    <link href="http://iori-o.github.io/blog/2013/04/03/padrino-plugins/"/>
+    <updated>2013-04-03T22:18:00+09:00</updated>
+    <id>http://iori-o.github.io/blog/2013/04/03/padrino-plugins</id>
+    <content type="html"><![CDATA[<p><a href="http://www.padrinorb.com/">Padrino</a> にはテンプレートと同じような仕組みとして Plugin Generator がある。
+利用できるプラグインは<a href="https://github.com/padrino/padrino-recipes/tree/master/plugins/">padrino/padrino-recipes</a>で公開されている。</p>
+
+<!-- more -->
+
+
+<p>また、以下のコマンドで Plugin の一覧を参照できる。</p>
+
+<p><code>bash
+% padrino g plugin -l
+Available plugins:
+  - ["960"]
+  - ["access"]
+  - ["ar_permalink_i18n"]
+  - ["ar_permalink"]
+  - ["ar_textile"]
+  - ["ar_translate"]
+  - ["auto_locale"]
+  - ["barista"]
+  - ["better_errors"]
+  - ["blueprint"]
+  - ["bootstrap"]
+  - ["bug"]
+  - ["carrierwave"]
+  - ["codehighlighter"]
+  - ["coderay"]
+  - ["coffee"]
+  - ["deflect"]
+  - ["disqus"]
+  - ["dreamhost"]
+  - ["exception_notifier"]
+  - ["flash_session"]
+  - ["fluxflex"]
+  - ["googleanalytics"]
+  - ["heroku"]
+  - ["hoptoad"]
+  - ["jammit"]
+  - ["maintenance"]
+  - ["omniauth"]
+  - ["openid"]
+  - ["payment"]
+  - ["recaptcha"]
+  - ["resque"]
+  - ["rewrite"]
+  - ["secure_only"]
+  - ["tripoli"]
+  - ["vcr"]
+  - ["watchr"]
+  - ["will_paginate"]
+</code></p>
+
+<h2>Plugin の適用</h2>
+
+<p>Plugin は作成したプロジェクトに適用することができる。</p>
+
+<p><code>bash
+% padrino g plugin [template_path]
+</code></p>
+
+<p>今回は新規プロジェクトに better_errors を追加した。</p>
+
+<p>``` bash
+% padrino g plugin better_errors</p>
+
+<pre><code>   apply  https://github.com/padrino/padrino-recipes/raw/master/plugins/better_errors_plugin.rb
+  append    Gemfile
+  insert    config/boot.rb
+</code></pre>
+
+<p>```</p>
+
+<p>それぞれのファイルの変更点を確認してみる。</p>
+
+<ul>
+<li><p>Gemfile
+``` ruby</p>
+
+<h1>Better Errors</h1>
+
+<p>group :development do
+gem "better_errors"
+gem "binding_of_caller"
+end
+```</p></li>
+<li><p>config/boot.rb
+``` ruby</p>
+
+<h1>Setup better_errors</h1>
+
+<p>if Padrino.env == :development
+require 'better_errors'
+Padrino::Application.use BetterErrors::Middleware
+BetterErrors.application_root = PADRINO_ROOT
+BetterErrors.logger = Padrino.logger
+end
+```</p></li>
+</ul>
+
+
+<p>この状態で</p>
+
+<p><code>bash
+% bundle install
+</code></p>
+
+<p>すると利用できるようになる。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rspec の expect 記法を使ったテストの書き方]]></title>
+    <link href="http://iori-o.github.io/blog/2013/04/03/rspec-expectations/"/>
+    <updated>2013-04-03T00:06:00+09:00</updated>
+    <id>http://iori-o.github.io/blog/2013/04/03/rspec-expectations</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/rspec/rspec-expectations">Rspec</a> では version 2.11 から</p>
+
+<p><code>ruby
+foo.should eq(bar)
+foo.should_not eq(bar)
+</code></p>
+
+<p>から</p>
+
+<p><code>ruby
+expect(foo).to eq(bar)
+expect(foo).not eq(bar)
+</code></p>
+
+<p>と書くようになった。</p>
+
+<!-- more -->
+
+
+<p>なぜ新しい記法を導入したかの説明は<a href="http://myronmars.to/n/dev-blog/2012/06/rspecs-new-expectation-syntax">RSpec's New Expectation Syntax</a>に書かれている。
+簡単にまとめると</p>
+
+<ul>
+<li><p><code>should</code> は <code>Kernel</code> にあるので、<code>Kernel</code> を <code>include</code> しない <code>BasicObject</code> を継承したクラスのインスタンスに対して <code>should</code> を呼ぶと不具合がある。</p></li>
+<li><p>標準ライブラリの <code>delegate</code> は <code>Kernel</code> のメソッドの一部だけを <code>include</code> しているので、<code>rspec</code> と <code>delegate</code> のロードする順序によって <code>should</code> の挙動がおかしくなる。</p></li>
+</ul>
+
+
+<p>という理由のようだ。</p>
+
+<h2>基本的な書き方</h2>
+
+<p>基本的には先述の通り</p>
+
+<ul>
+<li><code>foo.should</code> を <code>expect(foo).to</code> に</li>
+<li><code>foo.should_not</code> を <code>expect(foo).not</code> に</li>
+</ul>
+
+
+<p>書き換えるだけで対応できる。</p>
+
+<p>と、まとめていたらほぼ同じ内容が<a href="http://qiita.com/items/d880250adc8cdbe7a32f">RSpecのshouldはもう古い!新しい記法expectを使おう!</a>にまとまっていた。</p>
+]]></content>
+  </entry>
+  
+</feed>
