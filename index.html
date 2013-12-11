@@ -9,9 +9,7 @@
   <meta name="author" content="Iori ONDA">
 
   
-  <meta name="description" content="とあるプロジェクトで bundle install を実行した時に発生したエラーとその時に行った対応方法。 実行環境 Mac OS X ver.10.8.3
-rbenv 0.4.0
-ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64- &hellip;">
+  <meta name="description" content="パーフェクトRuby Advent Calendar 2013 11日目の記事です。 10日目の記事はパーフェクトRubyのおかげでYARDがよくなってGroongaイベントも開催できた話です。 あらまし 現在参画しているプロジェクトでは、週に火曜日と水曜日の2日間、 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +84,205 @@ ruby 1.9.3p392 (2013-02-22 revision 39386) [x86_64- &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/12/11/perfect-ruby-2013-12-11/">プロジェクトでパーフェクト Ruby を読んでます</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-11T23:46:00+09:00" pubdate data-updated="true">Dec 11<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/12/11/perfect-ruby-2013-12-11/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.adventar.org/calendars/198">パーフェクトRuby Advent Calendar 2013</a> 11日目の記事です。</p>
+
+<p>10日目の記事は<a href="http://www.clear-code.com/blog/2013/12/10.html">パーフェクトRubyのおかげでYARDがよくなってGroongaイベントも開催できた話</a>です。</p>
+
+<h2>あらまし</h2>
+
+<p>現在参画しているプロジェクトでは、週に火曜日と水曜日の2日間、それぞれ1時間づつ時間を確保してプロジェクトのメンバー全員で勉強会(読書会)を行っています。
+以前は<a href="http://www.amazon.co.jp/dp/4873115655">リーダブルコード</a>を読んでいたんですが、11月上旬に読み終わってしまったので「次は何を読むかー」となっていました。
+その時点では、特に何を読もうかというものは決まっていなかったので、プロジェクトのメンバーの中で「これを読みたい(読ませたい!!)」本を何冊か候補にあげ、多数決で読む本を決めました。</p>
+
+<p>候補に上がった書籍は以下の通りです。</p>
+
+<p>どれもいい本です。</p>
+
+<ul>
+<li><a href="http://www.oreilly.co.jp/books/9784873114026/">プロダクティブ・プログラマ</a></li>
+<li><a href="http://www.amazon.co.jp/dp/4048678841/">リファクタリング Ruby エディション</a></li>
+<li><a href="http://www.junkudo.co.jp/mj/products/detail.php?product_id=0100845511">達人プログラマ</a></li>
+<li><a href="http://www.amazon.co.jp/dp/4774158798/">パーフェクト Ruby</a></li>
+<li><a href="http://www.amazon.co.jp/exec/obidos/asin/4774142948">エキスパートのためのMySQL[運用+管理]トラブルシューティングガイド</a></li>
+<li><a href="http://www.amazon.co.jp/dp/4774142042">Webを支える技術</a></li>
+</ul>
+
+
+<p>リーダブルコードを読んでいた時は、プロジェクトのメンバー全員をいくつかのグループに分けて読んでいたんですけど、さすがにこれだけの本が候補にあがると票が分かれるわけで、今は投票の多かった本の上位3冊をグループに分かれて読み進めてます。
+どの本もいい本なので(2回目)、自分も票を入れる時には結構悩んで合計で3票くらい入れています。
+個人的には「パーフェクト Ruby」 → 「リファクタリング Ruby エディション」 or 「メタプログラミングRuby」 の順番で読むと理解が進むかなー、と思っていたので1票目はパーフェクト Ruby に入れました。
+パーフェクトRuby 以外ではどの2冊が選ばれたかは秘密です。</p>
+
+<h2>実際に読んでみて</h2>
+
+<p>今は読むセクションを決め、各自が黙読した上で疑問に思ったこと、みんなで話したいこと対して、知っている人が答える、実際にコードを書いて動作を確認してみるなどをして進めています。
+複数人で読んでいると自分が疑問に思わなかったようなところが疑問としてあがったり、似たようなトピックでも違う方向からの意見があったりして面白いです。</p>
+
+<p>今日はちょうど <strong>4-2 モジュール</strong> の部分を読んでいたのですが、<code>module</code> の <code>include</code> と <code>extend</code> がよくわからないという話がありました。
+何がちょうどかというと、昨日 <a href="https://bugs.ruby-lang.org/issues/9236#change-43578">include + include + alias_method + super behaviour inconsistency between 1.9 and 2.0</a> という Issue があったのでした。
+なので、今日の勉強会の後半では先ほどの Issue の内容について、どのような挙動で 何故 <code>stack level too deep</code> になってしまうか、また何故ならないのか、の話をしていました。</p>
+
+<h2>終わりに</h2>
+
+<p>今、パーフェクト Ruby を読んでいるメンバーですが、Ruby に精通しているメンバーもいれば、Ruby に触れてから1年弱のメンバーもいます。
+色んなレベルの人が、それぞれの小さな疑問から気になるトピックまでを網羅している素敵な本です。
+1人で読むのに飽きた人は、まだ読んでいない人と一緒に色々と話ながら読むと新しい発見があったりするかもしれないですよ。</p>
+
+<p>明日のパーフェクトRuby Advent Calendar は多分すがさんです。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2013/05/06/read-448009525x/">『数学文章作法 基礎編』を読んだ</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-06T16:12:00+09:00" pubdate data-updated="true">May 6<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/05/06/read-448009525x/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><a href="http://www.amazon.co.jp/数学文章作法-基礎編-ちくま学芸文庫-結城-浩/dp/448009525X?SubscriptionId=AKIAJJCTRN26NGWGSBSA&tag=iorionda-22&linkCode=xm2&camp=2025&creative=165953&creativeASIN=448009525X"><img src="http://ecx.images-amazon.com/images/I/51f9QjetSrL._SL160_.jpg" /></a></p>
+
+<h2>詳細目次</h2>
+
+<ul>
+<li>はじめに</li>
+<li>本書について</li>
+<li>読者について</li>
+<li>私について</li>
+<li>本書の構成</li>
+<li>謝辞</li>
+<li>第1章 読者
+
+<ul>
+<li>読者の知識</li>
+<li>読者の意欲</li>
+<li>読者の目的</li>
+</ul>
+</li>
+<li>第2章 基本
+
+<ul>
+<li>形式の大切さ</li>
+<li>文章の構造</li>
+<li>語句</li>
+<li>文</li>
+<li>段落</li>
+<li>節、章、……</li>
+</ul>
+</li>
+<li>第3章 順序と階層
+
+<ul>
+<li>順序</li>
+<li>階層</li>
+<li>表現の工夫</li>
+</ul>
+</li>
+<li>第4章 数式と命題</li>
+<li>読者を混乱させない
+
+<ul>
+<li>読者に手がかりを与える(メタ情報)</li>
+</ul>
+</li>
+<li>第5章 例
+
+<ul>
+<li>基本的な考え方</li>
+<li>説明と例の対応</li>
+<li>例の働き</li>
+<li>例を作る心がけ</li>
+</ul>
+</li>
+<li>第6章 問いと答え
+
+<ul>
+<li>問いと答えは呼応する</li>
+<li>どう問うか</li>
+<li>何を、いつ問うか</li>
+</ul>
+</li>
+<li>第7章 目次と索引
+
+<ul>
+<li>目次</li>
+<li>索引</li>
+<li>トピックス</li>
+</ul>
+</li>
+<li>第8章 たったひとつの伝えたいこと</li>
+<li>本書を振り返って</li>
+<li>参考文献</li>
+<li>索引</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -520,66 +717,9 @@ install 自体は <code>curl</code> で行う。</p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2013/01/17/install-octpress-theme/">Octpress のテーマを変更してみた。</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-01-17T20:05:00+09:00" pubdate data-updated="true">Jan 17<span>th</span>, 2013</time>
-        
-         | <a href="/blog/2013/01/17/install-octpress-theme/#disqus_thread">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Octpressのテーマを標準でインストールされているものから<a href="https://github.com/amelandri/darkstripes">darkstripes</a>に変更したのでメモ。</p>
-
-<p>テーマ自体は<a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">ここ</a>にまとまっていたので、自分が気に入るのがないかひと通り覗いてみた。
-標準のテーマのままで使ってる人が多いようなので、あまりテーマはないのかなと思っていたけどそれなりに充実していた。</p>
-
-<ul>
-<li><a href="https://github.com/shashankmehta/greyshade">greyshade</a></li>
-<li><a href="https://github.com/amelandri/darkstripes">darkstripes</a></li>
-<li><a href="http://blog.justin.kelly.org.au/octopress-theme/">justin-kelly</a></li>
-<li><a href="https://github.com/drunkdev/villainy-octopress-theme">villainy</a></li>
-</ul>
-
-
-<p>上の４つくらいでしばらく悩んだ結果darkstripeに決めた。
-また気が変わったらテーマを変更するかも。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2013/01/17/install-octpress-theme/">続きを読む &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
     
     <a href="/blog/archives">Blog Archives</a>
     
@@ -629,6 +769,14 @@ install 自体は <code>curl</code> で行う。</p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2013/12/11/perfect-ruby-2013-12-11/">プロジェクトでパーフェクト Ruby を読んでます</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/05/06/read-448009525x/">『数学文章作法 基礎編』を読んだ</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2013/05/06/failed-on-debugger-linecache/">bundle install 実行時に debugger-linecache で失敗した時の対応方法</a>
       </li>
     
@@ -638,14 +786,6 @@ install 自体は <code>curl</code> で行う。</p>
     
       <li class="post">
         <a href="/blog/2013/04/17/install-zsh-for-mac/">Macでhomebrewのzshを使う</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/03/remove-password-file-from-github/">GitHubに上げてしまったパスワードを書いたファイルを消す方法</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/04/03/nodebrew-install/">nodebrew をインストールする方法</a>
       </li>
     
   </ul>
